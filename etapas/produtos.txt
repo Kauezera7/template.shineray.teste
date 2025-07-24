@@ -1,0 +1,2 @@
+celular,433.54
+notbook,3000.0
