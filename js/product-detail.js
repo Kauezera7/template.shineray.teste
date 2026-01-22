@@ -18,10 +18,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // Update page title
     document.title = `ShineStore - ${product.name}`;
 
-    // Build product detail HTML
-    let thumbnailsHtml = '';
-    product.thumbnails.forEach(thumb => {
-        thumbnailsHtml += `<img src="${thumb}" alt="Thumbnail of ${product.name}" class="thumbnail-img">`;
+    // Combine all images (main + thumbnails) for the slider
+    const allImages = [product.mainImage, ...product.thumbnails.filter(t => t !== product.mainImage)];
+    
+    let slidesHtml = '';
+    let thumbsHtml = '';
+
+    allImages.forEach((img, index) => {
+        slidesHtml += `
+            <div class="detail-slide">
+                <img src="${img}" alt="${product.name} - Vista ${index + 1}">
+            </div>
+        `;
+        thumbsHtml += `
+            <img src="${img}" alt="Thumbnail ${index + 1}" class="thumbnail-img ${index === 0 ? 'active' : ''}" data-index="${index}">
+        `;
     });
 
     let specificationsHtml = '';
@@ -32,9 +43,15 @@ document.addEventListener('DOMContentLoaded', () => {
     productDetailContainer.innerHTML = `
         <div class="product-detail-layout">
             <div class="product-images">
-                <img src="${product.mainImage}" alt="${product.name}" id="main-product-image">
+                <div class="detail-slider-container">
+                    <div class="detail-slider-track">
+                        ${slidesHtml}
+                    </div>
+                    <button class="slider-btn prev">&lt;</button>
+                    <button class="slider-btn next">&gt;</button>
+                </div>
                 <div class="thumbnail-gallery">
-                    ${thumbnailsHtml}
+                    ${thumbsHtml}
                 </div>
             </div>
             <div class="product-info">
@@ -51,16 +68,38 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
     `;
 
-    // Add functionality to switch main image on thumbnail click
-    const mainImage = document.getElementById('main-product-image');
-    const thumbnails = document.querySelectorAll('.thumbnail-gallery .thumbnail-img');
+    // --- Slider Logic ---
+    const track = document.querySelector('.detail-slider-track');
+    const slides = document.querySelectorAll('.detail-slide');
+    const nextBtn = document.querySelector('.slider-btn.next');
+    const prevBtn = document.querySelector('.slider-btn.prev');
+    const thumbnails = document.querySelectorAll('.thumbnail-img');
+    
+    let currentIndex = 0;
 
-    thumbnails.forEach(thumbnail => {
-        thumbnail.addEventListener('click', () => {
-            mainImage.src = thumbnail.src;
-            // Optionally add an active class to highlight the current thumbnail
-            thumbnails.forEach(t => t.classList.remove('active'));
-            thumbnail.classList.add('active');
+    const updateSlider = (index) => {
+        currentIndex = index;
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        
+        // Update active thumbnail
+        thumbnails.forEach(t => t.classList.remove('active'));
+        thumbnails[currentIndex].classList.add('active');
+    };
+
+    nextBtn.addEventListener('click', () => {
+        let index = (currentIndex + 1) % slides.length;
+        updateSlider(index);
+    });
+
+    prevBtn.addEventListener('click', () => {
+        let index = (currentIndex - 1 + slides.length) % slides.length;
+        updateSlider(index);
+    });
+
+    thumbnails.forEach(thumb => {
+        thumb.addEventListener('click', () => {
+            const index = parseInt(thumb.dataset.index);
+            updateSlider(index);
         });
     });
 });

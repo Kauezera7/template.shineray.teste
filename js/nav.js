@@ -55,5 +55,74 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // --- Carousel Functionality ---
+    const track = document.querySelector('.carousel-track');
+    const prevBtn = document.querySelector('.carousel-btn.prev');
+    const nextBtn = document.querySelector('.carousel-btn.next');
+
+    if (track && prevBtn && nextBtn) {
+        let currentIndex = 0;
+        let autoPlayInterval;
+
+        const updateCarousel = () => {
+            const cardWidth = track.querySelector('.product-link').offsetWidth + 20; // 20 is gap
+            track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+        };
+
+        const nextSlide = () => {
+            const visibleCards = Math.floor(track.parentElement.offsetWidth / (track.querySelector('.product-link').offsetWidth));
+            const totalCards = track.querySelectorAll('.product-link').length;
+            
+            if (currentIndex < totalCards - visibleCards) {
+                currentIndex++;
+            } else {
+                currentIndex = 0; // Loop back to start
+            }
+            updateCarousel();
+        };
+
+        const prevSlide = () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+            } else {
+                const visibleCards = Math.floor(track.parentElement.offsetWidth / (track.querySelector('.product-link').offsetWidth));
+                const totalCards = track.querySelectorAll('.product-link').length;
+                currentIndex = totalCards - visibleCards; // Loop to end
+            }
+            updateCarousel();
+        };
+
+        const startAutoPlay = () => {
+            autoPlayInterval = setInterval(nextSlide, 5000); // Mudar a cada 5 segundos
+        };
+
+        const stopAutoPlay = () => {
+            clearInterval(autoPlayInterval);
+        };
+
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
+            stopAutoPlay();
+            startAutoPlay(); // Reinicia o timer ao clicar
+        });
+
+        prevBtn.addEventListener('click', () => {
+            prevSlide();
+            stopAutoPlay();
+            startAutoPlay(); // Reinicia o timer ao clicar
+        });
+
+        // Pausar quando o mouse estiver sobre o carrossel
+        const container = document.querySelector('.carousel-container');
+        container.addEventListener('mouseenter', stopAutoPlay);
+        container.addEventListener('mouseleave', startAutoPlay);
+
+        // Iniciar auto-play
+        startAutoPlay();
+
+        // Handle window resize to keep carousel aligned
+        window.addEventListener('resize', updateCarousel);
+    }
 });
 
