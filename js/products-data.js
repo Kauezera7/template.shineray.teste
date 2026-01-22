@@ -41,7 +41,9 @@ const productsData = [
         color: "azul",
         mainImage: "img/Denver.webp",
         thumbnails: [
-            "img/Denver.webp"
+            "img/Denver.webp",
+            "img/URBAN-150-EFI.webp",
+            "img/Storm.webp",
         ],
         specifications: {
             "Motor": "125cc",
