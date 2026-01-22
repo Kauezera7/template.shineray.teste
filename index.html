@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShineStore - Sua Loja Online</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="logo">ShineStore</a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="catalog.html">Produtos</a></li>
+                    <li><a href="index.html#about">Sobre</a></li>
+                    <li><a href="index.html#contact">Contato</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <h1>Produtos Incríveis, Preços Imbatíveis</h1>
+                <p>A melhor seleção de produtos, escolhida a dedo para você.</p>
+                <a href="catalog.html" class="btn">Ver Produtos</a>
+            </div>
+        </section>
+
+        <section id="products" class="product-grid">
+            <div class="container">
+                <h2>Nossos Destaques</h2>
+                <div class="products">
+                    <!-- Products will be wrapped in <a> tags to be clickable -->
+                    <a href="product-detail.html?id=1" class="product-link">
+                        <div class="product-card" data-id="1">
+                            <img src="https://via.placeholder.com/300x300/000000/FFFFFF/?text=Moto Preta" alt="Produto 1">
+                            <h3>Produto Fantástico</h3>
+                            <p class="price">R$ 99,90</p>
+                        </div>
+                    </a>
+                    <a href="product-detail.html?id=2" class="product-link">
+                        <div class="product-card" data-id="2">
+                            <img src="https://via.placeholder.com/300x300/FF0000/FFFFFF/?text=Moto Vermelha" alt="Produto 2">
+                            <h3>Produto Incrível</h3>
+                            <p class="price">R$ 129,90</p>
+                        </div>
+                    </a>
+                    <a href="product-detail.html?id=3" class="product-link">
+                        <div class="product-card" data-id="3">
+                            <img src="https://via.placeholder.com/300x300/0000FF/FFFFFF/?text=Moto Azul" alt="Produto 3">
+                            <h3>Produto Genial</h3>
+                            <p class="price">R$ 79,90</p>
+                        </div>
+                    </a>
+                    <a href="product-detail.html?id=4" class="product-link">
+                        <div class="product-card" data-id="4">
+                            <img src="https://via.placeholder.com/300x300/000000/FFFFFF/?text=Moto Preta" alt="Produto 4">
+                            <h3>Produto Essencial</h3>
+                            <p class="price">R$ 149,90</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="catalog-link-wrapper">
+                    <a href="catalog.html" class="btn">Ver Catálogo Completo</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <div class="container">
+                 <h2>Por que comprar conosco?</h2>
+                 <div class="features">
+                    <div class="feature">
+                        <img src="https://via.placeholder.com/50" alt="Ícone de Envio">
+                        <h3>Envio Rápido</h3>
+                        <p>Receba seus produtos em tempo recorde.</p>
+                    </div>
+                     <div class="feature">
+                        <img src="https://via.placeholder.com/50" alt="Ícone de Pagamento">
+                        <h3>Pagamento Seguro</h3>
+                        <p>Seus dados protegidos do início ao fim.</p>
+                    </div>
+                     <div class="feature">
+                        <img src="https://via.placeholder.com/50" alt="Ícone de Qualidade">
+                        <h3>Qualidade Garantida</h3>
+                        <p>Produtos selecionados e com garantia.</p>
+                    </div>
+                 </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <p>&copy; 2026 ShineStore. Todos os direitos reservados.</p>
+            <div class="social-links">
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/nav.js"></script>
+</body>
+</html>

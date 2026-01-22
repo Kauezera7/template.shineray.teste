@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShineStore - Catálogo de Produtos</title>
+    <link rel="stylesheet" href="css/catalog.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="logo">ShineStore</a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="catalog.html">Produtos</a></li>
+                    <li><a href="index.html#about">Sobre</a></li>
+                    <li><a href="index.html#contact">Contato</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="catalog" class="product-grid">
+            <div class="container">
+                <h2>Nosso Catálogo</h2>
+
+                <div id="filter-dropdown" class="filter-container">
+                    <label for="color-filter">Filtrar por cor:</label>
+                    <select id="color-filter" class="filter-select">
+                        <option value="all">Todas</option>
+                        <option value="preto">Preto</option>
+                        <option value="vermelho">Vermelho</option>
+                        <option value="azul">Azul</option>
+                        <option value="cinza">Cinza</option>
+                    </select>
+                </div>
+
+                <div class="products">
+                    <!-- Products will be wrapped in <a> tags to be clickable -->
+                    <a href="product-detail.html?id=1" class="product-link">
+                        <div class="product-card" data-color="preto" data-id="1">
+                            <img src="https://via.placeholder.com/300x300/000000/FFFFFF/?text=Moto Preta" alt="Produto 1">
+                            <h3>Produto Fantástico</h3>
+                            <p class="price">R$ 99,90</p>
+                        </div>
+                    </a>
+                    <a href="product-detail.html?id=2" class="product-link">
+                        <div class="product-card" data-color="vermelho" data-id="2">
+                            <img src="https://via.placeholder.com/300x300/FF0000/FFFFFF/?text=Moto Vermelha" alt="Produto 2">
+                            <h3>Produto Incrível</h3>
+                            <p class="price">R$ 129,90</p>
+                        </div>
+                    </a>
+                    <a href="product-detail.html?id=3" class="product-link">
+                        <div class="product-card" data-color="azul" data-id="3">
+                            <img src="https://via.placeholder.com/300x300/0000FF/FFFFFF/?text=Moto Azul" alt="Produto 3">
+                            <h3>Produto Genial</h3>
+                            <p class="price">R$ 79,90</p>
+                        </div>
+                    </a>
+                    <a href="product-detail.html?id=4" class="product-link">
+                        <div class="product-card" data-color="preto" data-id="4">
+                            <img src="https://via.placeholder.com/300x300/000000/FFFFFF/?text=Moto Preta" alt="Produto 4">
+                            <h3>Produto Essencial</h3>
+                            <p class="price">R$ 149,90</p>
+                        </div>
+                    </a>
+                    <a href="product-detail.html?id=5" class="product-link">
+                        <div class="product-card" data-color="vermelho" data-id="5">
+                            <img src="https://via.placeholder.com/300x300/FF0000/FFFFFF/?text=Moto Vermelha" alt="Produto 5">
+                            <h3>Produto Premium</h3>
+                            <p class="price">R$ 199,90</p>
+                        </div>
+                    </a>
+                    <a href="product-detail.html?id=6" class="product-link">
+                        <div class="product-card" data-color="cinza" data-id="6">
+                            <img src="https://via.placeholder.com/300x300/808080/FFFFFF/?text=Moto Cinza" alt="Produto 6">
+                            <h3>Produto Básico</h3>
+                            <p class="price">R$ 49,90</p>
+                        </div>
+                    </a>
+                    <a href="product-detail.html?id=7" class="product-link">
+                        <div class="product-card" data-color="azul" data-id="7">
+                            <img src="https://via.placeholder.com/300x300/0000FF/FFFFFF/?text=Moto Azul" alt="Produto 7">
+                            <h3>Produto Avançado</h3>
+                            <p class="price">R$ 249,90</p>
+                        </div>
+                    </a>
+                    <a href="product-detail.html?id=8" class="product-link">
+                        <div class="product-card" data-color="cinza" data-id="8">
+                            <img src="https://via.placeholder.com/300x300/808080/FFFFFF/?text=Moto Cinza" alt="Produto 8">
+                            <h3>Produto Compacto</h3>
+                            <p class="price">R$ 89,90</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <p>&copy; 2026 ShineStore. Todos os direitos reservados.</p>
+            <div class="social-links">
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/nav.js"></script>
+    <script src="js/catalog.js"></script>
+</body>
+</html>
