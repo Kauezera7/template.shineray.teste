@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ShineStore - Sua Loja Online</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/hero-slider.css">
 </head>
 <body>
     <header>
@@ -28,16 +29,38 @@
     </header>
 
     <main>
-        <section id="home" class="hero">
-            <div class="container">
-                <h1>Produtos Incríveis, Preços Imbatíveis</h1>
-                <p>A melhor seleção de produtos, escolhida a dedo para você.</p>
-                <a href="catalog.html" class="btn">Ver Produtos</a>
+        <section id="home" class="hero-slider">
+            <div class="hero-slide active" style="background-image: linear-gradient(rgba(10, 37, 64, 0.5), rgba(10, 37, 64, 0.5)), url('img/shinerayteste.png');">
+                <div class="container">
+                    <h1>Destaque ShineStore</h1>
+                    <p>Confira as melhores ofertas da semana.</p>
+                </div>
+            </div>
+            <div class="hero-slide" style="background-image: linear-gradient(rgba(10, 37, 64, 0.5), rgba(10, 37, 64, 0.5)), url('img/URBAN-150-EFI.webp');">
+                <div class="container">
+                    <h1>Nova Shineray Urban 150</h1>
+                    <p>Potência e estilo para o seu dia a dia.</p>
+                </div>
+            </div>
+            <div class="hero-slide" style="background-image: linear-gradient(rgba(10, 37, 64, 0.5), rgba(10, 37, 64, 0.5)), url('img/250F.webp');">
+                <div class="container">
+                    <h1>Aventura sem Limites</h1>
+                    <p>Conheça a nova linha SHI 250F Off-Road.</p>
+                </div>
+            </div>
+            <div class="hero-slide" style="background-image: linear-gradient(rgba(10, 37, 64, 0.5), rgba(10, 37, 64, 0.5)), url('img/Storm.webp');">
+                <div class="container">
+                    <h1>Shineray Storm 150</h1>
+                    <p>Economia e desempenho que você precisa.</p>
+                </div>
             </div>
         </section>
 
         <section id="products" class="product-grid">
             <div class="container">
+                <div class="catalog-link-wrapper" style="margin-bottom: 20px;">
+                    <a href="catalog.html" class="btn">Ver Produtos</a>
+                </div>
                 <h2>Nossos Destaques</h2>
                 <div class="carousel-container">
                     <button class="carousel-btn prev" aria-label="Anterior">&lt;</button>

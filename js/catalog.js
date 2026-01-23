@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         filteredProducts.forEach(product => {
             const productHtml = `
-                <a href="product-detail.html?id=${product.id}" class="product-link">
+                <a href="product-detail.html?modelo=${product.slug}" class="product-link">
                     <div class="product-card" data-color="${product.color}" data-id="${product.id}">
                         <img src="${product.mainImage}" alt="${product.name}">
                         <h3>${product.name}</h3>

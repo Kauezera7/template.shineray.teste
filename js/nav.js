@@ -124,5 +124,68 @@ document.addEventListener('DOMContentLoaded', () => {
         // Handle window resize to keep carousel aligned
         window.addEventListener('resize', updateCarousel);
     }
+
+    // --- Hero Slider Logic ---
+    const heroSlides = document.querySelectorAll('.hero-slide');
+    const heroPrevBtn = document.querySelector('.hero-btn.prev');
+    const heroNextBtn = document.querySelector('.hero-btn.next');
+
+    if (heroSlides.length > 0) {
+        let currentHeroIndex = 0;
+        const heroIntervalTime = 6000; // 6 seconds
+        let heroInterval;
+
+        const showHeroSlide = (index) => {
+            // Remove active class from all slides
+            heroSlides.forEach(slide => slide.classList.remove('active'));
+            // Add active class to current slide
+            heroSlides[index].classList.add('active');
+        };
+
+        const nextHeroSlide = () => {
+            currentHeroIndex++;
+            if (currentHeroIndex >= heroSlides.length) {
+                currentHeroIndex = 0;
+            }
+            showHeroSlide(currentHeroIndex);
+        };
+
+        const prevHeroSlide = () => {
+            currentHeroIndex--;
+            if (currentHeroIndex < 0) {
+                currentHeroIndex = heroSlides.length - 1;
+            }
+            showHeroSlide(currentHeroIndex);
+        };
+
+        // Auto Play
+        const startHeroAutoPlay = () => {
+            heroInterval = setInterval(nextHeroSlide, heroIntervalTime);
+        };
+
+        const stopHeroAutoPlay = () => {
+            clearInterval(heroInterval);
+        };
+
+        // Event Listeners
+        if (heroNextBtn) {
+            heroNextBtn.addEventListener('click', () => {
+                nextHeroSlide();
+                stopHeroAutoPlay();
+                startHeroAutoPlay();
+            });
+        }
+
+        if (heroPrevBtn) {
+            heroPrevBtn.addEventListener('click', () => {
+                prevHeroSlide();
+                stopHeroAutoPlay();
+                startHeroAutoPlay();
+            });
+        }
+
+        // Start Auto Play on load
+        startHeroAutoPlay();
+    }
 });
 

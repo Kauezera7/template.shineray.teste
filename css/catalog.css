@@ -119,6 +119,47 @@ body.nav-open {
     background-color: var(--btn-hover-color);
 }
 
+.btn-contact {
+    display: inline-block;
+    background-color: #25d366;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.btn-contact:hover {
+    background-color: #128c7e;
+}
+
+/* Breadcrumb Styles */
+.breadcrumb {
+    padding: 20px 0;
+    font-size: 0.9rem;
+    color: #666;
+    display: flex;
+    align-items: center;
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.breadcrumb a:hover {
+    color: var(--secondary-color);
+}
+
+.breadcrumb .separator {
+    margin: 0 10px;
+    color: #999;
+}
+
+.breadcrumb .current {
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+
 /* Product Grid */
 .product-grid {
     padding: 60px 0;
@@ -381,24 +422,81 @@ footer {
     margin-bottom: 30px;
 }
 
-.specifications {
+/* Specs Accordion Styles */
+.accordion {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
     margin-bottom: 30px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-.specifications h2 {
+.accordion-header {
+    background-color: #f8f9fa;
+    padding: 15px 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s;
+    user-select: none;
+}
+
+.accordion-header:hover {
+    background-color: #e9ecef;
+}
+
+.accordion-header h2 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    border: none;
+}
+
+.accordion-icon {
     font-size: 1.5rem;
-    margin-bottom: 15px;
-    border-bottom: 2px solid var(--secondary-color);
-    display: inline-block;
+    font-weight: bold;
+    color: var(--secondary-color);
+    transition: transform 0.3s ease;
+    line-height: 1;
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+    background-color: #ffffff;
+}
+
+.accordion.active .accordion-icon {
+    transform: rotate(45deg);
 }
 
 .specifications ul {
     list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .specifications li {
-    padding: 10px 0;
-    border-bottom: 1px solid #ddd;
+    padding: 12px 20px;
+    font-size: 0.95rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.specifications li:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.specifications li:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.specifications li strong {
+    color: var(--primary-color);
+    font-weight: 600;
 }
 
 @media (max-width: 768px) {
