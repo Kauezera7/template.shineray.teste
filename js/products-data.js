@@ -160,5 +160,23 @@ const productsData = [
             "Freios": "Disco ABS (Ambos)",
             "Rodas": "Liga Leve Preta Aro 13"
         }
+    },
+    {
+        id: 10,
+        slug: "urban-150-efi",
+        name: "Shineray Urban 150 EFI",
+        price: "R$ 13.990,00",
+        color: "preto",
+        mainImage: "img/URBAN-150-EFI.webp",
+        thumbnails: ["img/URBAN-150-EFI.webp", "img/Storm.webp", "img/Denver.webp"],
+        specifications: {
+            "Cilindrada": "150 cc",
+            "Potência": "12.9 cv",
+            "Câmbio": "Automático CVT",
+            "Partida": "Elétrica e Pedal",
+            "Tanque": "5,5 Litros",
+            "Freios": "Disco Hidráulico (Dianteiro e Traseiro)",
+            "Rodas": "Liga Leve Aro 13"
+        }
     }
 ];

@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ShineStore - Sua Loja Online</title>
+    <title>ShineStore - Nossos Vendedores</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/hero-slider.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -24,64 +23,71 @@
                     <span></span>
                     <span></span>
                 </div>
-
             </div>
         </nav>
     </header>
 
     <main>
-        <section id="home" class="hero-slider">
-            <div class="hero-slide active" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img/shinerayteste.png');">
-            </div>
-            <div class="hero-slide" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img/URBAN-150-EFI.webp');">
-            </div>
-            <div class="hero-slide" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img/250F.webp');">
-            </div>
-            <div class="hero-slide" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img/Storm.webp');">
-            </div>
-        </section>
+        <section class="container" style="padding: 60px 20px;">
+            <h1 style="text-align: center; margin-bottom: 10px; color: var(--primary-color);">Fale com um Especialista</h1>
+            <p style="text-align: center; margin-bottom: 50px; color: #666;">Escolha um de nossos consultores abaixo para um atendimento personalizado.</p>
+            
+            <div class="sellers-grid">
+                <!-- Vendedor 1 -->
+                <a href="seller-profile.html?id=carlos-junior" class="seller-card">
+                    <div class="seller-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="seller-info">
+                        <h3>Carlos Júnior</h3>
+                        <p class="role">Gerente de Vendas</p>
+                    </div>
+                    <div class="seller-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </a>
 
-        <section id="products" class="product-grid">
-            <div class="container">
-                <div class="catalog-link-wrapper" style="margin-bottom: 20px;">
-                    <a href="catalog.html" class="btn">Ver Produtos</a>
-                </div>
-                <h2>Nossos Destaques</h2>
-                <div class="carousel-container">
-                    <button class="carousel-btn prev" aria-label="Anterior">&lt;</button>
-                    <div class="carousel-track-container">
-                        <div class="products carousel-track">
-                            <!-- Os produtos serão carregados automaticamente pelo js/home-carousel.js -->
-                        </div>
+                <!-- Vendedor 2 -->
+                <a href="seller-profile.html?id=fernanda-oliveira" class="seller-card">
+                    <div class="seller-avatar">
+                        <i class="fas fa-user-tie"></i>
                     </div>
-                    <button class="carousel-btn next" aria-label="Próximo">&gt;</button>
-                </div>
-                <div class="catalog-link-wrapper">
-                    <a href="catalog.html" class="btn">Ver Catálogo Completo</a>
-                </div>
-            </div>
-        </section>
+                    <div class="seller-info">
+                        <h3>Fernanda Oliveira</h3>
+                        <p class="role">Consultora de Consórcio</p>
+                    </div>
+                    <div class="seller-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </a>
 
-        <section id="about" class="about-section">
-            <div class="container">
-                 <h2>Por que comprar conosco?</h2>
-                 <div class="features">
-                    <div class="feature">
-                        <img src="https://via.placeholder.com/50" alt="Ícone de Envio">
-                        <h3>Envio Rápido</h3>
-                        <p>Receba seus produtos em tempo recorde.</p>
+                <!-- Vendedor 3 -->
+                <a href="seller-profile.html?id=ricardo-silva" class="seller-card">
+                    <div class="seller-avatar">
+                        <i class="fas fa-headset"></i>
                     </div>
-                     <div class="feature">
-                        <img src="https://via.placeholder.com/50" alt="Ícone de Pagamento">
-                        <h3>Pagamento Seguro</h3>
-                        <p>Seus dados protegidos do início ao fim.</p>
+                    <div class="seller-info">
+                        <h3>Ricardo Silva</h3>
+                        <p class="role">Vendas Online</p>
                     </div>
-                     <div class="feature">
-                        <img src="https://via.placeholder.com/50" alt="Ícone de Qualidade">
-                        <h3>Qualidade Garantida</h3>
-                        <p>Produtos selecionados e com garantia.</p>
+                    <div class="seller-arrow">
+                        <i class="fas fa-chevron-right"></i>
                     </div>
-                 </div>
+                </a>
+
+                <!-- Vendedor 4 -->
+                <a href="seller-profile.html?id=ana-souza" class="seller-card">
+                    <div class="seller-avatar">
+                        <i class="fas fa-motorcycle"></i>
+                    </div>
+                    <div class="seller-info">
+                        <h3>Ana Souza</h3>
+                        <p class="role">Especialista Shineray</p>
+                    </div>
+                    <div class="seller-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </a>
             </div>
         </section>
     </main>
@@ -91,7 +97,6 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <a href="index.html" class="logo" style="color: #fff; text-decoration: none; display: flex; align-items: center; gap: 10px;">
-                        <!-- Using the requested icon -->
                         <img src="https://cdn-icons-png.flaticon.com/512/2456/2456835.png" alt="ShineStore Logo" style="width: 40px; filter: invert(1);">
                         <span>ShineStore</span>
                     </a>
@@ -135,9 +140,5 @@
     </footer>
 
     <script src="js/menu.js"></script>
-    <script src="js/products-data.js"></script>
-    <script src="js/home-carousel.js"></script>
-    <script src="js/carousel.js"></script>
-    <script src="js/hero-slider.js"></script>
 </body>
 </html>

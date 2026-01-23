@@ -1,17 +1,18 @@
+// product-detail.js - Gerencia a exibição dinâmica dos detalhes do produto
+
 document.addEventListener('DOMContentLoaded', () => {
     const productDetailContainer = document.getElementById('product-detail-container');
     
-    // Function to extract slug from URL (Query Param OR Hash)
+    // Função para extrair o slug (modelo) da URL (Query Param ou Hash)
     const getProductSlug = () => {
         const urlParams = new URLSearchParams(window.location.search);
         const paramSlug = urlParams.get('modelo');
         if (paramSlug) return paramSlug;
 
-        // Try getting from Hash: #/inicio/catalogo/slug-do-produto
+        // Tenta pegar pelo Hash: #/inicio/catalogo/slug-do-produto
         const hash = window.location.hash;
         if (hash && hash.includes('/catalogo/')) {
             const parts = hash.split('/');
-            // Assumes format #/inicio/catalogo/slug
             return parts[parts.length - 1];
         }
         return null;
@@ -31,27 +32,41 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    // --- Clean URL Logic ---
-    // Changes URL to: product-detail.html#/inicio/catalogo/urban-150-efi
+    // --- Lógica de URL Limpa ---
+    // Altera a URL para: product-detail.html#/inicio/catalogo/urban-150-efi
     const newHash = `/inicio/catalogo/${product.slug}`;
     if (window.location.hash !== '#' + newHash) {
-        // Use replaceState to update URL without reloading and remove query params
+        // Usa replaceState para atualizar a URL sem recarregar e remover query params
         const newUrl = `${window.location.pathname}#${newHash}`;
         window.history.replaceState(null, document.title, newUrl);
     }
 
-    const productId = product.id; // Still needed for related products filtering
+    const productId = product.id; // Necessário para filtrar produtos relacionados
 
-    // Update page title
+    // Atualiza o título da página e meta tags para SEO
     document.title = `ShineStore - ${product.name}`;
+    
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+        metaDescription.setAttribute('content', `Conheça a ${product.name}. Preço: ${product.price}. Veja a ficha técnica completa e fale com um consultor.`);
+    }
 
-    // Update Breadcrumb Text
+    // Tags Open Graph (Redes Sociais)
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    const ogImage = document.querySelector('meta[property="og:image"]');
+
+    if (ogTitle) ogTitle.setAttribute('content', `ShineStore - ${product.name}`);
+    if (ogDescription) ogDescription.setAttribute('content', `Confira a ${product.name} por apenas ${product.price}. Aproveite nossas ofertas!`);
+    if (ogImage) ogImage.setAttribute('content', window.location.origin + '/' + product.mainImage);
+
+    // Atualiza o texto do Breadcrumb (Caminho de navegação)
     const breadcrumbName = document.getElementById('breadcrumb-product-name');
     if (breadcrumbName) {
         breadcrumbName.textContent = product.name;
     }
 
-    // Combine all images (main + thumbnails) for the slider
+    // Combina todas as imagens para o slider
     const allImages = [product.mainImage, ...product.thumbnails.filter(t => t !== product.mainImage)];
     
     let slidesHtml = '';
@@ -73,6 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
         specificationsHtml += `<li><strong>${key}:</strong> <span>${product.specifications[key]}</span></li>`;
     }
 
+    // Renderiza o HTML principal
     productDetailContainer.innerHTML = `
         <div class="product-detail-layout">
             <div class="product-images">
@@ -108,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
     `;
 
-    // --- Accordion Logic ---
+    // --- Lógica do Acordeão (Ficha Técnica) ---
     const accordion = productDetailContainer.querySelector('.accordion');
     const accordionHeader = productDetailContainer.querySelector('.accordion-header');
     
@@ -124,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Slider Logic ---
+    // --- Lógica do Slider de Imagens ---
     const track = document.querySelector('.detail-slider-track');
     const slides = document.querySelectorAll('.detail-slide');
     const nextBtn = document.querySelector('.slider-btn.next');
@@ -137,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentIndex = index;
         track.style.transform = `translateX(-${currentIndex * 100}%)`;
         
-        // Update active thumbnail
+        // Atualiza a miniatura ativa
         thumbnails.forEach(t => t.classList.remove('active'));
         thumbnails[currentIndex].classList.add('active');
     };
@@ -159,19 +175,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Related Products Logic ---
+    // --- Lógica de Produtos Relacionados ---
     const relatedContainer = document.getElementById('related-products-container');
     if (relatedContainer && typeof productsData !== 'undefined') {
-        // Filter out current product
+        // Filtra para remover o produto atual da lista
         const availableProducts = productsData.filter(p => p.id !== productId);
         
-        // Shuffle array to get random products each time
+        // Embaralha o array para pegar produtos aleatórios a cada vez
         const shuffled = availableProducts.sort(() => 0.5 - Math.random());
 
-        // Take first 3
+        // Pega os 3 primeiros
         const selectedProducts = shuffled.slice(0, 3);
 
-        // Render
+        // Renderiza os produtos relacionados
         selectedProducts.forEach(p => {
              const productHtml = `
                 <a href="product-detail.html?modelo=${p.slug}" class="product-link">
