@@ -1,10 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // O trilho (track) é onde as motos ficam alinhadas uma ao lado da outra
     const carouselTrack = document.querySelector('.carousel-track');
 
     if (carouselTrack && typeof productsData !== 'undefined') {
-        carouselTrack.innerHTML = ''; // Limpa os estáticos
+        // Limpa qualquer conteúdo estático que estiver no HTML
+        carouselTrack.innerHTML = ''; 
 
-        // Renderiza todos os produtos no carrossel
+        // Percorre a lista de motos e cria o HTML para cada uma
         productsData.forEach(product => {
             const productHtml = `
                 <a href="product-detail.html?modelo=${product.slug}" class="product-link">
@@ -18,7 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
             carouselTrack.innerHTML += productHtml;
         });
 
-        // Após carregar os produtos, reiniciamos a lógica do carrossel (que está no nav.js ou chamamos aqui)
-        // Como a lógica está no nav.js, ela já vai funcionar se os elementos forem criados a tempo.
+        // NOTA: A lógica de movimento (botão para o lado) está no arquivo js/carousel.js
     }
 });

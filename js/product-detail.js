@@ -3,13 +3,16 @@
 document.addEventListener('DOMContentLoaded', () => {
     const productDetailContainer = document.getElementById('product-detail-container');
     
-    // Função para extrair o slug (modelo) da URL (Query Param ou Hash)
+    /**
+     * FUNÇÃO: Identificar qual moto mostrar
+     * Ela olha para a barra de endereço e procura por '?modelo=nome-da-moto'
+     */
     const getProductSlug = () => {
         const urlParams = new URLSearchParams(window.location.search);
         const paramSlug = urlParams.get('modelo');
         if (paramSlug) return paramSlug;
 
-        // Tenta pegar pelo Hash: #/inicio/catalogo/slug-do-produto
+        // Alternativa: Se usar links com # (ex: #/inicio/catalogo/urban-150-efi)
         const hash = window.location.hash;
         if (hash && hash.includes('/catalogo/')) {
             const parts = hash.split('/');
@@ -20,11 +23,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const productSlug = getProductSlug();
 
+    // Se não encontrar o nome da moto na URL, avisa o usuário
     if (!productSlug) {
         productDetailContainer.innerHTML = '<p>Produto não encontrado.</p>';
         return;
     }
 
+    // Busca os dados da moto dentro do arquivo js/products-data.js
     const product = productsData.find(p => p.slug === productSlug);
 
     if (!product) {
@@ -32,18 +37,19 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    // --- Lógica de URL Limpa ---
-    // Altera a URL para: product-detail.html#/inicio/catalogo/urban-150-efi
+    /**
+     * SEO E URL LIMPA
+     * Melhora como o Google vê o site e como o link aparece na barra de endereço
+     */
     const newHash = `/inicio/catalogo/${product.slug}`;
     if (window.location.hash !== '#' + newHash) {
-        // Usa replaceState para atualizar a URL sem recarregar e remover query params
         const newUrl = `${window.location.pathname}#${newHash}`;
         window.history.replaceState(null, document.title, newUrl);
     }
 
-    const productId = product.id; // Necessário para filtrar produtos relacionados
+    const productId = product.id; 
 
-    // Atualiza o título da página e meta tags para SEO
+    // Atualiza o título da aba do navegador e as metatags para redes sociais
     document.title = `ShineStore - ${product.name}`;
     
     const metaDescription = document.querySelector('meta[name="description"]');
@@ -51,22 +57,9 @@ document.addEventListener('DOMContentLoaded', () => {
         metaDescription.setAttribute('content', `Conheça a ${product.name}. Preço: ${product.price}. Veja a ficha técnica completa e fale com um consultor.`);
     }
 
-    // Tags Open Graph (Redes Sociais)
-    const ogTitle = document.querySelector('meta[property="og:title"]');
-    const ogDescription = document.querySelector('meta[property="og:description"]');
-    const ogImage = document.querySelector('meta[property="og:image"]');
+    // --- MONTAGEM DO HTML DINÂMICO ---
 
-    if (ogTitle) ogTitle.setAttribute('content', `ShineStore - ${product.name}`);
-    if (ogDescription) ogDescription.setAttribute('content', `Confira a ${product.name} por apenas ${product.price}. Aproveite nossas ofertas!`);
-    if (ogImage) ogImage.setAttribute('content', window.location.origin + '/' + product.mainImage);
-
-    // Atualiza o texto do Breadcrumb (Caminho de navegação)
-    const breadcrumbName = document.getElementById('breadcrumb-product-name');
-    if (breadcrumbName) {
-        breadcrumbName.textContent = product.name;
-    }
-
-    // Combina todas as imagens para o slider
+    // 1. Prepara a Galeria de Fotos
     const allImages = [product.mainImage, ...product.thumbnails.filter(t => t !== product.mainImage)];
     
     let slidesHtml = '';
@@ -83,12 +76,13 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
     });
 
+    // 2. Prepara a Ficha Técnica
     let specificationsHtml = '';
     for (const key in product.specifications) {
         specificationsHtml += `<li><strong>${key}:</strong> <span>${product.specifications[key]}</span></li>`;
     }
 
-    // Renderiza o HTML principal
+    // 3. Injeta tudo no container principal da página
     productDetailContainer.innerHTML = `
         <div class="product-detail-layout">
             <div class="product-images">
@@ -124,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
     `;
 
-    // --- Lógica do Acordeão (Ficha Técnica) ---
+    // --- LÓGICA DO ACORDEÃO (ABRIR/FECHAR FICHA TÉCNICA) ---
     const accordion = productDetailContainer.querySelector('.accordion');
     const accordionHeader = productDetailContainer.querySelector('.accordion-header');
     
@@ -140,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Lógica do Slider de Imagens ---
+    // --- LÓGICA DO SLIDER DE IMAGENS (PASSAR FOTOS) ---
     const track = document.querySelector('.detail-slider-track');
     const slides = document.querySelectorAll('.detail-slide');
     const nextBtn = document.querySelector('.slider-btn.next');
@@ -153,7 +147,6 @@ document.addEventListener('DOMContentLoaded', () => {
         currentIndex = index;
         track.style.transform = `translateX(-${currentIndex * 100}%)`;
         
-        // Atualiza a miniatura ativa
         thumbnails.forEach(t => t.classList.remove('active'));
         thumbnails[currentIndex].classList.add('active');
     };
@@ -168,6 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateSlider(index);
     });
 
+    // Clique nas miniaturas
     thumbnails.forEach(thumb => {
         thumb.addEventListener('click', () => {
             const index = parseInt(thumb.dataset.index);
@@ -175,19 +169,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Lógica de Produtos Relacionados ---
+    // --- LÓGICA DE PRODUTOS RELACIONADOS ---
     const relatedContainer = document.getElementById('related-products-container');
     if (relatedContainer && typeof productsData !== 'undefined') {
-        // Filtra para remover o produto atual da lista
         const availableProducts = productsData.filter(p => p.id !== productId);
-        
-        // Embaralha o array para pegar produtos aleatórios a cada vez
         const shuffled = availableProducts.sort(() => 0.5 - Math.random());
-
-        // Pega os 3 primeiros
         const selectedProducts = shuffled.slice(0, 3);
 
-        // Renderiza os produtos relacionados
         selectedProducts.forEach(p => {
              const productHtml = `
                 <a href="product-detail.html?modelo=${p.slug}" class="product-link">

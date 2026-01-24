@@ -1,12 +1,18 @@
+/**
+ * BANCO DE DADOS DE PRODUTOS
+ * Aqui você gerencia todas as motos do site.
+ */
 const productsData = [
     {
-        id: 1,
-        slug: "urban-150-efi",
-        name: "Shineray Urban 150 EFI",
-        price: "R$ 13.990,00",
-        color: "preto",
-        mainImage: "img/URBAN-150-EFI.webp",
+        id: 1, // ID único (não repita)
+        slug: "urban-150-efi", // Identificador na URL (ex: product-detail.html?modelo=urban-150-efi)
+        name: "Shineray Urban 150 EFI", // Nome que aparece no site
+        price: "R$ 13.990,00", // Preço exibido
+        color: "preto", // Cor para o filtro do catálogo
+        mainImage: "img/URBAN-150-EFI.webp", // Foto principal (deve estar na pasta img)
+        // Outras fotos que aparecem na galeria de detalhes
         thumbnails: ["img/URBAN-150-EFI.webp", "img/Storm.webp", "img/Denver.webp"],
+        // Informações técnicas da moto
         specifications: {
             "Cilindrada": "150 cc",
             "Potência": "12.9 cv",
@@ -163,7 +169,7 @@ const productsData = [
     },
     {
         id: 10,
-        slug: "urban-150-efi",
+        slug: "urban-150-efi-v2",
         name: "Shineray Urban 150 EFI",
         price: "R$ 13.990,00",
         color: "preto",

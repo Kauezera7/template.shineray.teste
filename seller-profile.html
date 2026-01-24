@@ -3,138 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ShineStore - Perfil do Vendedor</title>
+    <title>Shineray Colombo - Perfil do Vendedor</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/catalog.css">
+    <link rel="stylesheet" href="css/seller-profile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        .profile-header {
-            background-color: #000;
-            color: white;
-            padding: 60px 0 100px;
-            text-align: center;
-            position: relative;
-            margin-bottom: 80px;
-        }
-        
-        .profile-card-container {
-            margin-top: -80px;
-            background: white;
-            border-radius: 15px;
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            text-align: center;
-            position: relative;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .profile-avatar-large {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 5px solid white;
-            object-fit: cover;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            margin-top: -115px; /* Pull up to overlap header */
-            margin-bottom: 20px;
-            background-color: #eee;
-        }
-
-        .profile-name {
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 5px;
-        }
-
-        .profile-role {
-            font-size: 1.1rem;
-            color: var(--secondary-color);
-            font-weight: 600;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-        }
-
-        .profile-bio {
-            font-size: 1.1rem;
-            color: #555;
-            line-height: 1.8;
-            margin-bottom: 30px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-bottom: 30px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #666;
-            font-size: 1rem;
-        }
-
-        .contact-item i {
-            color: var(--secondary-color);
-        }
-
-        .action-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .btn-large {
-            padding: 15px 30px;
-            font-size: 1.1rem;
-        }
-
-    </style>
 </head>
 <body>
-    <!-- Botão Voltar -->
-    <div style="position: absolute; top: 20px; left: 20px; z-index: 100;">
-        <a href="sellers.html" style="color: white; text-decoration: none; font-size: 1.5rem; background: rgba(0,0,0,0.3); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <!-- LOGO: Altere o 'src' para mudar a imagem do logo -->
+                <a href="index.html" class="logo">
+                    <img src="img/Shineray-logo2.png" alt="Shineray Logo" class="logo-img">
+                </a>
+                <!-- MENU: Links principais do site -->
+                <ul class="nav-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="catalog.html">Produtos</a></li>
+                    <li><a href="index.html#about">Sobre</a></li>
+                    <li><a href="index.html#contact">Contato</a></li>
+                </ul>
+                <!-- MENU CELULAR: Ícone que aparece em telas pequenas -->
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+    <!-- BOTÃO VOLTAR: Permite ao usuário retornar para a lista de todos os vendedores -->
+    <div class="back-button-container">
+        <a href="sellers.html" class="btn-back">
             <i class="fas fa-arrow-left"></i>
         </a>
     </div>
 
     <main>
+        <!-- CABEÇALHO DO PERFIL: Parte preta no topo da página -->
         <div class="profile-header">
             <div class="container">
-                <!-- Logo discreta no topo -->
-                <img src="https://cdn-icons-png.flaticon.com/512/2456/2456835.png" alt="ShineStore" style="width: 50px; filter: invert(1); opacity: 0.8;">
-                <h1 style="font-size: 1.5rem; margin-top: 10px;">ShineStore</h1>
+                <!-- Espaço para o fundo preto do perfil -->
             </div>
         </div>
 
+        <!-- CONTEÚDO DO PERFIL: 
+             As fotos e links do vendedor são injetados aqui pelo js/seller-profile.js 
+        -->
         <div class="container" id="profile-content">
-            <!-- Conteúdo será injetado aqui pelo JS -->
             <div class="profile-card-container">
                 <p>Carregando perfil...</p>
             </div>
         </div>
     </main>
 
+    <!-- RODAPÉ: Informações de contato, links rápidos e redes sociais -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
+                <!-- Coluna 1: Logo e Empresa -->
                 <div class="footer-section">
-                    <a href="index.html" class="logo" style="color: #fff; text-decoration: none; display: flex; align-items: center; gap: 10px;">
-                        <img src="https://cdn-icons-png.flaticon.com/512/2456/2456835.png" alt="ShineStore Logo" style="width: 40px; filter: invert(1);">
-                        <span>ShineStore</span>
+                    <a href="index.html" class="logo">
+                        <img src="img/Shineray-logo-branco.png" alt="ShineStore Logo" class="logo-footer">
                     </a>
-                    <p style="margin-top: 15px; color: #ccc;">As melhores motos com os melhores preços. Qualidade e segurança em primeiro lugar.</p>
+                    <p>© 2025 Shineray<br>CNPJ: 00.000.000/0000-00</p>
                 </div>
-                
+
+                <!-- Coluna 2: Navegação Rápida -->
                 <div class="footer-section">
                     <h3>Navegação</h3>
                     <ul class="footer-links">
@@ -145,6 +83,17 @@
                     </ul>
                 </div>
                 
+                <!-- Coluna 3: Informações de Contato -->
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <p><i class="fas fa-phone"></i> (11) 9999-8888</p>
+                    <p><i class="fas fa-envelope"></i> contato@shinestore.com.br</p>
+                    <a href="https://maps.google.com" class="btn btn-location" target="_blank">
+                        <i class="fas fa-map-marker-alt"></i> Localização
+                    </a>
+                </div>
+                
+                <!-- Coluna 4: Redes Sociais -->
                 <div class="footer-section">
                     <h3>Redes Sociais</h3>
                     <div class="social-links-footer">
@@ -154,22 +103,15 @@
                         <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
-                
-                <div class="footer-section">
-                    <h3>Contato</h3>
-                    <p><i class="fas fa-phone"></i> (11) 9999-8888</p>
-                    <p><i class="fas fa-envelope"></i> contato@shinestore.com.br</p>
-                    <a href="sellers.html" class="btn btn-whatsapp" style="margin-top: 10px; display: inline-block;">
-                        <i class="fab fa-whatsapp"></i> Falar com Vendedor
-                    </a>
-                </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2026 ShineStore. Todos os direitos reservados.</p>
+                <p>Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
+
+    <script src="js/menu.js"></script>
 
     <script src="js/sellers-data.js"></script>
     <script src="js/seller-profile.js"></script>

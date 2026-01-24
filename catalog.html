@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ShineStore - Catálogo de Produtos</title>
+    <title>Shineray Colombo - Catálogo de Produtos</title>
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/catalog.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -11,27 +12,35 @@
     <header>
         <nav class="navbar">
             <div class="container">
-                <a href="index.html" class="logo">ShineStore</a>
+                <!-- LOGO: Altere o 'src' para mudar a imagem do logo -->
+                <a href="index.html" class="logo">
+                    <img src="img/Shineray-logo2.png" alt="Shineray Logo" class="logo-img">
+                </a>
+                <!-- MENU: Links principais do site -->
                 <ul class="nav-links">
                     <li><a href="index.html">Início</a></li>
                     <li><a href="catalog.html">Produtos</a></li>
                     <li><a href="index.html#about">Sobre</a></li>
                     <li><a href="index.html#contact">Contato</a></li>
                 </ul>
+                <!-- MENU CELULAR: Ícone que aparece em telas pequenas -->
                 <div class="hamburger">
                     <span></span>
                     <span></span>
                     <span></span>
                 </div>
+
             </div>
         </nav>
     </header>
 
     <main>
+        <!-- SEÇÃO DO CATÁLOGO: Onde as motos são listadas -->
         <section id="catalog" class="product-grid">
             <div class="container">
                 <h2>Nosso Catálogo</h2>
 
+                <!-- FILTRO DE CORES: Permite ao usuário filtrar as motos por cor -->
                 <div id="filter-dropdown" class="filter-container">
                     <label for="color-filter">Filtrar por cor:</label>
                     <select id="color-filter" class="filter-select">
@@ -43,6 +52,9 @@
                     </select>
                 </div>
 
+                <!-- CONTAINER DE PRODUTOS: 
+                     O conteúdo abaixo é preenchido automaticamente pelo arquivo js/catalog.js 
+                -->
                 <div class="products">
                     <!-- Os produtos serão carregados automaticamente pelo js/catalog.js -->
                 </div>
@@ -50,17 +62,19 @@
         </section>
     </main>
 
+    <!-- RODAPÉ: Informações de contato, links rápidos e redes sociais -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
+                <!-- Coluna 1: Logo e Empresa -->
                 <div class="footer-section">
-                    <a href="index.html" class="logo" style="color: #fff; text-decoration: none; display: flex; align-items: center; gap: 10px;">
-                        <img src="https://cdn-icons-png.flaticon.com/512/2456/2456835.png" alt="ShineStore Logo" style="width: 40px; filter: invert(1);">
-                        <span>ShineStore</span>
+                    <a href="index.html" class="logo">
+                        <img src="img/Shineray-logo-branco.png" alt="ShineStore Logo" class="logo-footer">
                     </a>
-                    <p style="margin-top: 15px; color: #ccc;">As melhores motos com os melhores preços. Qualidade e segurança em primeiro lugar.</p>
+                    <p>© 2025 Shineray<br>CNPJ: 00.000.000/0000-00</p>
                 </div>
-                
+
+                <!-- Coluna 2: Navegação Rápida -->
                 <div class="footer-section">
                     <h3>Navegação</h3>
                     <ul class="footer-links">
@@ -71,6 +85,17 @@
                     </ul>
                 </div>
                 
+                <!-- Coluna 3: Informações de Contato -->
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <p><i class="fas fa-phone"></i> (11) 9999-8888</p>
+                    <p><i class="fas fa-envelope"></i> contato@shinestore.com.br</p>
+                    <a href="https://maps.google.com" class="btn btn-location" target="_blank">
+                        <i class="fas fa-map-marker-alt"></i> Localização
+                    </a>
+                </div>
+                
+                <!-- Coluna 4: Redes Sociais -->
                 <div class="footer-section">
                     <h3>Redes Sociais</h3>
                     <div class="social-links-footer">
@@ -80,19 +105,10 @@
                         <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
-                
-                <div class="footer-section">
-                    <h3>Contato</h3>
-                    <p><i class="fas fa-phone"></i> (11) 9999-8888</p>
-                    <p><i class="fas fa-envelope"></i> contato@shinestore.com.br</p>
-                    <a href="sellers.html" class="btn btn-whatsapp" style="margin-top: 10px; display: inline-block;">
-                        <i class="fab fa-whatsapp"></i> Falar com Vendedor
-                    </a>
-                </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2026 ShineStore. Todos os direitos reservados.</p>
+                <p>Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>

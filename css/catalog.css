@@ -22,14 +22,14 @@ body {
     background-color: var(--background-color);
     color: var(--text-color);
     line-height: 1.6;
-    transition: background-color 0.3s; /* For smooth transition on nav open */
-    min-height: 100vh; /* Ensure body takes full viewport height */
+    transition: background-color 0.3s; /* Transição suave quando o menu abre */
+    min-height: 100vh; /* Garante que o corpo ocupe toda a altura da tela */
     display: flex;
     flex-direction: column;
 }
 
 main {
-    flex-grow: 1; /* Allow main content to grow and push footer down */
+    flex-grow: 1; /* Permite que o conteúdo principal cresça e empurre o rodapé para baixo */
 }
 
 body.nav-open {
@@ -42,7 +42,7 @@ body.nav-open {
     padding: 0 20px;
 }
 
-/* Header */
+/* Cabeçalho */
 .navbar {
     background-color: var(--card-bg-color);
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -63,7 +63,7 @@ body.nav-open {
     font-weight: 700;
     color: var(--primary-color);
     text-decoration: none;
-    z-index: 1001; /* Ensure logo is above nav overlay */
+    z-index: 1001; /* Garante que o logo fique acima da sobreposição do menu */
 }
 
 .nav-links {
@@ -89,7 +89,7 @@ body.nav-open {
 .hamburger {
     display: none;
     cursor: pointer;
-    z-index: 1001; /* Ensure hamburger is above nav overlay */
+    z-index: 1001; /* Garante que o ícone hambúrguer fique acima da sobreposição do menu */
 }
 
 .hamburger span {

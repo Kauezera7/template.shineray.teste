@@ -1,14 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
+/* 
+   VARIÁVEIS DE CORES
+   Aqui você define a "identidade" do site. 
+   Mude os códigos hexadecimais (ex: #000000) para trocar as cores de uma vez.
+*/
 :root {
-    --primary-color: #000000;
-    --secondary-color: #C8080E;
-    --background-color: #f8f9fa;
-    --text-color: #333;
-    --card-bg-color: #ffffff;
-    --footer-bg-color: #000000;
-    --footer-text-color: #ffffff;
-    --btn-hover-color: #a0060b;
+    --primary-color: #000000;      /* Preto principal */
+    --secondary-color: #C8080E;    /* Vermelho Shineray */
+    --background-color: #f8f9fa;   /* Cinza bem clarinho para o fundo */
+    --text-color: #333;           /* Cor das letras */
+    --card-bg-color: #ffffff;      /* Fundo dos cartões de motos (Branco) */
+    --footer-bg-color: #000000;    /* Fundo do rodapé */
+    --footer-text-color: #ffffff;  /* Texto do rodapé */
+    --btn-hover-color: #a0060b;    /* Cor do botão quando passa o mouse */
 }
 
 * {
@@ -17,13 +22,13 @@
     box-sizing: border-box;
 }
 
+/* Configurações do corpo da página (Geral) */
 body {
     font-family: 'Poppins', sans-serif;
     background-color: var(--background-color);
     color: var(--text-color);
     line-height: 1.6;
-    transition: background-color 0.3s; /* For smooth transition on nav open */
-    min-height: 100vh; /* Ensure body takes full viewport height */
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
@@ -42,12 +47,12 @@ body.nav-open {
     padding: 0 20px;
 }
 
-/* Header */
+/* BARRA DE NAVEGAÇÃO (MENU) */
 .navbar {
     background-color: var(--card-bg-color);
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     padding: 1rem 0;
-    position: sticky;
+    position: sticky; /* O menu "gruda" no topo ao rolar */
     top: 0;
     z-index: 1000;
 }
@@ -58,12 +63,33 @@ body.nav-open {
     align-items: center;
 }
 
+/* --- LOGOTIPO --- */
 .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--primary-color);
-    text-decoration: none;
-    z-index: 1001; /* Ensure logo is above nav overlay */
+    z-index: 1001; /* Garante que o logo fique acima da sobreposição do menu mobile */
+}
+
+/* Imagem do logo no topo */
+.logo-img {
+    height: 35px;
+    width: auto;
+}
+
+/* Imagem do logo no rodapé */
+.logo-footer {
+    height: 40px;
+    width: auto;
+}
+
+/* Estilo para garantir que o link do logo no rodapé seja visível */
+.footer .logo {
+    color: #fff;
 }
 
 .nav-links {
@@ -221,6 +247,7 @@ body.nav-open {
     margin-top: 40px;
 }
 
+/* CARTÃO DE PRODUTO (As caixinhas das motos) */
 .product-card {
     background-color: var(--card-bg-color);
     border-radius: 8px;
@@ -234,9 +261,10 @@ body.nav-open {
     justify-content: space-between;
 }
 
+/* Efeito quando passa o mouse no cartão */
 .product-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    transform: translateY(-10px); /* A caixinha sobe um pouquinho */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15); /* A sombra aumenta */
 }
 
 .product-card img {
@@ -292,14 +320,15 @@ body.nav-open {
     margin-bottom: 10px;
 }
 
-/* Footer */
+/* --- RODAPÉ (FOOTER) - O final da página --- */
 footer {
-    background-color: var(--footer-bg-color);
-    color: var(--footer-text-color);
-    padding: 60px 0 20px;
-    font-size: 0.9rem;
+    background-color: var(--footer-bg-color); /* Cor de fundo (Preto) */
+    color: var(--footer-text-color);    /* Cor do texto (Branco) */
+    padding: 60px 0 20px;               /* Espaçamento interno */
+    font-size: 0.9rem;                  /* Tamanho da letra um pouco menor */
 }
 
+/* Organização das colunas do rodapé */
 .footer-content {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -308,14 +337,16 @@ footer {
     text-align: left;
 }
 
+/* Títulos das colunas (Navegação, Contato, etc) */
 .footer-section h3 {
     font-size: 1.2rem;
     margin-bottom: 20px;
-    color: var(--secondary-color);
+    color: var(--secondary-color); /* Vermelho Shineray */
     text-transform: uppercase;
     font-weight: 700;
 }
 
+/* Lista de links do rodapé */
 .footer-links {
     list-style: none;
     padding: 0;
@@ -326,16 +357,18 @@ footer {
 }
 
 .footer-links a {
-    color: #ccc;
+    color: #ccc; /* Cinza claro para os links */
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
+/* Efeito ao passar o mouse nos links */
 .footer-links a:hover {
     color: var(--secondary-color);
-    padding-left: 5px;
+    padding-left: 5px; /* Move o link levemente para a direita */
 }
 
+/* Seção de Redes Sociais */
 .social-links-footer {
     display: flex;
     gap: 15px;
@@ -349,15 +382,37 @@ footer {
 
 .social-links-footer a:hover {
     color: var(--secondary-color);
-    transform: translateY(-3px);
+    transform: translateY(-3px); /* Ícone sobe um pouco */
 }
 
+/* Textos e informações de contato */
 .footer-section p {
     color: #ccc;
     margin-bottom: 10px;
     display: flex;
     align-items: center;
     gap: 10px;
+}
+
+/* Parte final do rodapé (Copyright) */
+.footer-bottom {
+    border-top: 1px solid #333; /* Linha divisória */
+    padding-top: 20px;
+    text-align: center;
+    color: #777;
+    font-size: 0.8rem;
+}
+
+/* Botão de Localização no rodapé */
+.btn-location {
+    margin-top: 15px;
+    display: inline-block;
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
 }
 
 .footer-section i {
@@ -456,24 +511,40 @@ footer {
     color: inherit;
 }
 
-/* Sellers Page Styles - Estilo Shineray */
+/* --- SEÇÃO DE VENDEDORES (Lista Geral) --- */
+.sellers-section {
+    padding: 60px 20px;
+}
+
+.sellers-title {
+    text-align: center;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.sellers-subtitle {
+    text-align: center;
+    margin-bottom: 50px;
+    color: #666;
+}
+
 .sellers-grid {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    max-width: 800px;
-    margin: 40px auto;
+    gap: 15px;
+    max-width: 650px;
+    margin: 0 auto;
 }
 
 .seller-card {
     display: flex;
     align-items: center;
     background: #ffffff;
-    border-radius: 16px;
-    padding: 25px;
+    border-radius: 12px;
+    padding: 20px 30px;
     text-decoration: none;
     color: var(--text-color);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     border: 2px solid transparent;
     transition: all 0.3s ease;
     position: relative;
@@ -494,8 +565,8 @@ footer {
 }
 
 .seller-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(200, 8, 14, 0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(200, 8, 14, 0.1);
     border-color: #ff6b6b;
 }
 
@@ -504,17 +575,17 @@ footer {
 }
 
 .seller-avatar {
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     background: linear-gradient(135deg, #ff6b6b, var(--secondary-color));
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 25px;
+    margin-right: 20px;
     flex-shrink: 0;
     color: white;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     border: none;
     margin-bottom: 0;
 }
@@ -524,14 +595,14 @@ footer {
 }
 
 .seller-card h3 {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     font-weight: 600;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
     color: #000;
 }
 
 .seller-card .role {
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: #666;
     margin-bottom: 0;
 }

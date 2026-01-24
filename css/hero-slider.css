@@ -1,9 +1,9 @@
-/* Hero Slider Styles */
+/* Estilos do Banner Principal (Hero Slider) */
 .hero-slider {
     position: relative;
-    height: 500px; /* Adjust height as needed */
+    height: 500px; /* Ajuste a altura conforme necessário */
     overflow: hidden;
-    background-color: #000; /* Fallback color */
+    background-color: #000; /* Cor de fundo caso a imagem falhe */
 }
 
 .hero-slide {

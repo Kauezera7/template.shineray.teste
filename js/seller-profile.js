@@ -3,7 +3,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const profileContent = document.getElementById('profile-content');
     
-    // Pegar o ID do vendedor na URL (Ex: ?id=carlos-junior)
+    // Pega o ID do vendedor na URL (Ex: ?id=carlos-junior)
     const urlParams = new URLSearchParams(window.location.search);
     const sellerId = urlParams.get('id');
 
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    // Busca o vendedor no array de dados
+    // Busca o vendedor no array de dados dentro de js/sellers-data.js
     const seller = sellersData.find(s => s.id === sellerId);
 
     if (!seller) {
@@ -20,10 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    // Atualiza o título da página com o nome do vendedor
-    document.title = `ShineStore - ${seller.name}`;
+    // Atualiza o título da aba do navegador com o nome do vendedor
+    document.title = `Shineray Colombo - ${seller.name}`;
 
-    // Renderiza o perfil com o estilo de árvore de links (Linktree)
+    // Renderiza o perfil com o estilo de árvore de links (estilo Linktree)
     profileContent.innerHTML = `
         <div class="profile-card-container">
             <img src="${seller.avatar}" alt="${seller.name}" class="profile-avatar-large">
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             <div class="sellers-grid" style="margin: 0 auto; width: 100%;">
                 
-                <!-- WhatsApp -->
+                <!-- Link do WhatsApp -->
                 <a href="https://wa.me/${seller.whatsapp}" class="seller-card" target="_blank">
                     <div class="seller-avatar" style="background: linear-gradient(135deg, #25D366, #128C7E);">
                         <i class="fab fa-whatsapp"></i>
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </a>
 
-                <!-- Instagram -->
+                <!-- Link do Instagram -->
                 <a href="${seller.instagram}" class="seller-card" target="_blank">
                     <div class="seller-avatar" style="background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);">
                         <i class="fab fa-instagram"></i>
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </a>
 
-                <!-- Catálogo -->
+                <!-- Link para o Catálogo -->
                 <a href="catalog.html" class="seller-card">
                     <div class="seller-avatar" style="background: linear-gradient(135deg, #000000, #333333);">
                         <i class="fas fa-motorcycle"></i>
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </a>
 
-                <!-- Localização -->
+                <!-- Link de Localização -->
                 <a href="${seller.locationLink}" class="seller-card" target="_blank">
                     <div class="seller-avatar" style="background: linear-gradient(135deg, #ff9966, #ff5e62);">
                         <i class="fas fa-map-marker-alt"></i>

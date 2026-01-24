@@ -1,15 +1,19 @@
+/**
+ * BANCO DE DADOS DE VENDEDORES
+ * Aqui você gerencia os perfis dos consultores que aparecem no site.
+ */
 const sellersData = [
     {
-        id: "carlos-junior",
-        name: "Carlos Júnior",
-        role: "Gerente de Vendas",
-        whatsapp: "5500000000000",
-        instagram: "https://instagram.com",
-        location: "Unidade Centro",
-        locationLink: "https://maps.google.com",
-        avatar: "https://randomuser.me/api/portraits/men/32.jpg",
-        bio: "Com mais de 10 anos de experiência, lidero a equipe da ShineStore. Especialista em negociações complexas e frotas.",
-        email: "carlos@shinestore.com.br"
+        id: "carlos-junior", // ID único usado na URL (ex: seller-profile.html?id=carlos-junior)
+        name: "Carlos Júnior", // Nome completo do vendedor
+        role: "Gerente de Vendas", // Cargo ou especialidade
+        whatsapp: "5500000000000", // Número do WhatsApp (com 55 + DDD + Número)
+        instagram: "https://instagram.com", // Link completo do perfil no Instagram
+        location: "Unidade Centro", // Nome da loja onde ele atende
+        locationLink: "https://maps.google.com", // Link do Google Maps da loja
+        avatar: "https://randomuser.me/api/portraits/men/32.jpg", // Foto do vendedor (link ou caminho da pasta img)
+        bio: "Com mais de 10 anos de experiência, lidero a equipe da ShineStore. Especialista em negociações complexas e frotas.", // Pequeno texto sobre ele
+        email: "carlos@shinestore.com.br" // E-mail de contato
     },
     {
         id: "fernanda-oliveira",
