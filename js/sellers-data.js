@@ -12,8 +12,8 @@ const sellersData = [
         location: "Unidade Centro", // Nome da loja onde ele atende
         locationLink: "https://maps.google.com", // Link do Google Maps da loja
         avatar: "https://randomuser.me/api/portraits/men/32.jpg", // Foto do vendedor (link ou caminho da pasta img)
-        bio: "Com mais de 10 anos de experiência, lidero a equipe da ShineStore. Especialista em negociações complexas e frotas.", // Pequeno texto sobre ele
-        email: "carlos@shinestore.com.br" // E-mail de contato
+        bio: "Com mais de 10 anos de experiência, lidero a equipe da Shineray. Especialista em negociações complexas e frotas.", // Pequeno texto sobre ele
+        email: "carlos@shineray.com.br" // E-mail de contato
     },
     {
         id: "fernanda-oliveira",
@@ -25,7 +25,7 @@ const sellersData = [
         locationLink: "https://maps.google.com",
         avatar: "https://randomuser.me/api/portraits/women/44.jpg",
         bio: "Especialista em realizar sonhos através do consórcio. Ajudo você a planejar a compra da sua moto nova.",
-        email: "fernanda@shinestore.com.br"
+        email: "fernanda@shineray.com.br"
     },
     {
         id: "ricardo-silva",
@@ -37,7 +37,7 @@ const sellersData = [
         locationLink: "https://maps.google.com",
         avatar: "https://randomuser.me/api/portraits/men/85.jpg",
         bio: "Atendimento ágil e digital. Agilizo sua aprovação de crédito sem você sair de casa.",
-        email: "ricardo@shinestore.com.br"
+        email: "ricardo@shineray.com.br"
     },
     {
         id: "ana-souza",
@@ -49,7 +49,7 @@ const sellersData = [
         locationLink: "https://maps.google.com",
         avatar: "https://randomuser.me/api/portraits/women/65.jpg",
         bio: "Apaixonada por duas rodas e expert em toda a linha Shineray. Sei qual modelo se encaixa no seu bolso.",
-        email: "ana@shinestore.com.br"
+        email: "ana@shineray.com.br"
     },
     
 ];

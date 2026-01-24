@@ -1,6 +1,6 @@
-# Documentação do Projeto: ShineStore
+# Documentação do Projeto: Shineray
 
-Este documento contém a visão geral, estrutura de arquivos e funcionalidades do template ShineStore.
+Este documento contém a visão geral, estrutura de arquivos e funcionalidades do template Shineray.
 
 ---
 

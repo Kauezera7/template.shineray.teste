@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const productId = product.id; 
 
     // Atualiza o título da aba do navegador e as metatags para redes sociais
-    document.title = `ShineStore - ${product.name}`;
+    document.title = `Shineray - ${product.name}`;
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
