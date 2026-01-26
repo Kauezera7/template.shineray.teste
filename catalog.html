@@ -35,28 +35,54 @@
     </header>
 
     <main>
-        <!-- SEÇÃO DO CATÁLOGO: Onde as motos são listadas -->
-        <section id="catalog" class="product-grid">
+        <section class="filters-section">
             <div class="container">
-                <h2>Nosso Catálogo</h2>
-
-                <!-- FILTRO DE CORES: Permite ao usuário filtrar as motos por cor -->
-                <div id="filter-dropdown" class="filter-container">
-                    <label for="color-filter">Filtrar por cor:</label>
-                    <select id="color-filter" class="filter-select">
-                        <option value="all">Todas</option>
-                        <option value="preto">Preto</option>
-                        <option value="vermelho">Vermelho</option>
-                        <option value="azul">Azul</option>
-                        <option value="cinza">Cinza</option>
-                    </select>
+                <h1 class="page-title">Catálogo de Motos</h1>
+                <p class="page-subtitle">Encontre a moto perfeita para você</p>
+                
+                <div class="filters">
+                    <div class="filter-group">
+                        <label for="color-filter">Filtrar por Cor:</label>
+                        <select id="color-filter" class="filter-select">
+                            <option value="all">Todas as cores</option>
+                            <option value="vermelho">Vermelho</option>
+                            <option value="preto">Preto</option>
+                            <option value="branco">Branco</option>
+                            <option value="azul">Azul</option>
+                            <option value="cinza">Cinza</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="fuel-filter">Filtrar por Combustível:</label>
+                        <select id="fuel-filter" class="filter-select">
+                            <option value="all">Todos</option>
+                            <option value="gasolina">Gasolina</option>
+                            <option value="eletrica">Elétrica</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="brand-filter">Filtrar por Marca:</label>
+                        <select id="brand-filter" class="filter-select">
+                            <option value="all">Todas as marcas</option>
+                            <option value="shineray">Shineray</option>
+                            <option value="sbm">SBM</option>
+                        </select>
+                    </div>
+                    
+                    <button id="reset-filters" class="btn btn-secondary">
+                        <i class="fas fa-redo"></i> Limpar Filtros
+                    </button>
                 </div>
+            </div>
+        </section>
 
-                <!-- CONTAINER DE PRODUTOS: 
-                     O conteúdo abaixo é preenchido automaticamente pelo arquivo js/catalog.js 
-                -->
+        <!-- Resultados -->
+        <section class="product-grid">
+            <div class="container">
                 <div class="products">
-                    <!-- Os produtos serão carregados automaticamente pelo js/catalog.js -->
+                    <!-- JS vai preencher aqui -->
                 </div>
             </div>
         </section>

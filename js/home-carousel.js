@@ -1,25 +1,50 @@
+/**
+ * LÓGICA DO CARROSSEL DE PRODUTOS (HOME)
+ * Carrega as motos dinamicamente na página inicial usando o novo design.
+ */
 document.addEventListener('DOMContentLoaded', () => {
-    // O trilho (track) é onde as motos ficam alinhadas uma ao lado da outra
-    const carouselTrack = document.querySelector('.carousel-track');
+    const track = document.querySelector('.carousel-track');
+    
+    if (!track) return;
 
-    if (carouselTrack && typeof productsData !== 'undefined') {
-        // Limpa qualquer conteúdo estático que estiver no HTML
-        carouselTrack.innerHTML = ''; 
+    const renderCarouselProducts = () => {
+        // Pega apenas as primeiras 6 motos para o destaque da home
+        const featuredProducts = productsData.slice(0, 6);
 
-        // Percorre a lista de motos e cria o HTML para cada uma
-        productsData.forEach(product => {
-            const productHtml = `
-                <a href="product-detail.html?modelo=${product.slug}" class="product-link">
-                    <div class="product-card" data-id="${product.id}">
-                        <img src="${product.mainImage}" alt="${product.name}">
-                        <h3>${product.name}</h3>
-                        <p class="price">${product.price}</p>
-                    </div>
-                </a>
+        const productsHtml = featuredProducts.map(product => {
+            const highlightsHtml = (product.highlights || [])
+                .map(h => `<span><i class="fas ${h.icon}"></i> ${h.text}</span>`)
+                .join('');
+
+            return `
+                <div class="product-link">
+                    <a href="product-detail.html?modelo=${product.slug}" style="text-decoration:none; color:inherit;">
+                        <div class="product-card">
+                            <div class="moto-badge">${(product.brand || 'Shineray').toUpperCase()}</div>
+                            <img src="${product.mainImage}" alt="${product.name}">
+                            
+                            <div class="moto-info">
+                                <h3>${product.name}</h3>
+                                
+                                <div class="moto-specs">
+                                    ${highlightsHtml}
+                                </div>
+                                
+                                <div class="moto-price">
+                                    <strong>${product.price}</strong>
+                                    <small>${product.installment || 'Consulte parcelamento'}</small>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             `;
-            carouselTrack.innerHTML += productHtml;
-        });
+        }).join('');
 
-        // NOTA: A lógica de movimento (botão para o lado) está no arquivo js/carousel.js
+        track.innerHTML = productsHtml;
+    };
+
+    if (typeof productsData !== 'undefined') {
+        renderCarouselProducts();
     }
 });

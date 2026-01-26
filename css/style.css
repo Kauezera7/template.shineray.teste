@@ -22,6 +22,13 @@
     box-sizing: border-box;
 }
 
+/* Imagens Responsivas Globais */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
 /* Configurações do corpo da página (Geral) */
 body {
     font-family: 'Poppins', sans-serif;
@@ -163,20 +170,16 @@ body.nav-open {
 
 /* Product Grid */
 .product-grid {
-    padding: 60px 0;
+    padding: 80px 0; /* Aumentei o espaçamento vertical */
+    overflow: hidden; /* Evita scroll horizontal indesejado */
 }
 
 .product-grid h2 {
     text-align: center;
     font-size: 2.5rem;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
     color: var(--primary-color);
-}
-
-.products {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
+    font-weight: 700;
 }
 
 /* Carousel Styles */
@@ -184,12 +187,16 @@ body.nav-open {
     position: relative;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
+    max-width: 1200px; /* Limita a largura máxima */
+    margin: 0 auto;    /* Centraliza na tela */
+    padding: 0 40px;   /* Espaço para as setas não ficarem em cima do conteúdo */
 }
 
 .carousel-track-container {
     overflow: hidden;
     width: 100%;
+    padding: 15px 0; /* Espaço para a sombra dos cards não ser cortada */
 }
 
 .carousel-track {
@@ -247,45 +254,93 @@ body.nav-open {
     margin-top: 40px;
 }
 
-/* CARTÃO DE PRODUTO (As caixinhas das motos) */
+/* --- NOVO DESIGN DE CARTÃO (MOTO-CARD) --- */
 .product-card {
-    background-color: var(--card-bg-color);
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    text-align: center;
-    padding: 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 4px 12px rgba(200, 8, 14, 0.15); /* Mantém sua sombra vermelha */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    height: 100%;
+    text-align: left; /* Alinhamento à esquerda como no seu modelo */
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    position: relative;
+    border: 1px solid rgba(200, 8, 14, 0.1);
 }
 
-/* Efeito quando passa o mouse no cartão */
 .product-card:hover {
-    transform: translateY(-10px); /* A caixinha sobe um pouquinho */
-    box-shadow: 0 8px 16px rgba(0,0,0,0.15); /* A sombra aumenta */
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(200, 8, 14, 0.3);
+}
+
+.moto-badge {
+    background: var(--secondary-color); /* Agora usa o Vermelho Shineray */
+    color: white;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 700;
+    display: inline-block;
+    margin-bottom: 10px;
+    width: fit-content;
+    text-transform: uppercase;
+    box-shadow: 0 2px 5px rgba(200, 8, 14, 0.2); /* Adicionei uma sombra sutil vermelha */
 }
 
 .product-card img {
     width: 100%;
-    height: 200px; /* Altura fixa para alinhamento */
+    aspect-ratio: 4/3;
     object-fit: contain;
-    background-color: #f0f0f0;
-    border-radius: 5px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
     margin-bottom: 15px;
 }
 
 .product-card h3 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
+    font-size: 1.25rem;
+    margin: 0 0 10px 0;
+    color: var(--primary-color);
+    font-weight: 700;
 }
 
-.product-card .price {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--secondary-color);
+.moto-specs {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
     margin-bottom: 15px;
+    font-size: 13px;
+    color: #666;
+}
+
+.moto-specs span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.moto-specs i {
+    color: var(--secondary-color); /* Ícones em vermelho Shineray */
+    width: 16px;
+    text-align: center;
+}
+
+.moto-price {
+    margin-bottom: 15px;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.moto-price strong {
+    font-size: 1.5rem;
+    color: var(--secondary-color); /* Vermelho Shineray */
+    display: block;
+}
+
+.moto-price small {
+    display: block;
+    color: #888;
+    font-size: 0.85rem;
+    margin-top: 2px;
 }
 
 /* About Section */

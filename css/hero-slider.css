@@ -1,9 +1,11 @@
 /* Estilos do Banner Principal (Hero Slider) */
 .hero-slider {
     position: relative;
-    height: 500px; /* Ajuste a altura conforme necessário */
+    height: 70vh; /* Usa altura baseada na tela do usuário */
+    min-height: 400px;
+    max-height: 600px;
     overflow: hidden;
-    background-color: #000; /* Cor de fundo caso a imagem falhe */
+    background-color: #000;
 }
 
 .hero-slide {

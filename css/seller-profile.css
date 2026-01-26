@@ -31,8 +31,8 @@
     border: 5px solid white;
     object-fit: cover;
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    margin-top: -115px; /* Puxa a foto para cima para sobrepor o fundo preto */
-    margin-bottom: 20px;
+    margin: -115px auto 20px auto; /* Centraliza horizontalmente e puxa para cima */
+    display: block; /* Garante que a margem auto funcione */
     background-color: #eee;
 }
 
