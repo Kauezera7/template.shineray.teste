@@ -48,8 +48,12 @@ template.shineray.teste/
 *   **Smooth Scroll:** Rolagem suave ao navegar pelos links da página.
 
 ### Home Page Interativa
-*   **Hero Slider (`hero-slider.js`):** Banner rotativo principal com transições e destaques visuais.
-*   **Carrossel de Produtos (`home-carousel.js`):** Slider horizontal que exibe os produtos em destaque.
+*   **Hero Slider (`hero-slider.js`):** Banner rotativo principal com transições e destaques visuais. Agora inclui botões de navegação manual (Anterior/Próximo).
+*   **Carrossel de Produtos (`home-carousel.js`):** Slider horizontal que exibe os produtos em destaque. O botão "Ver Catálogo Completo" foi posicionado logo abaixo do título para melhor conversão.
+
+### Responsividade e Visual
+*   **Imagens Adaptáveis:** Todas as imagens do site utilizam `max-width: 100%` e `height: auto` para garantir que se ajustem a qualquer tamanho de tela (Celular, Tablet, Desktop).
+*   **Performance Visual:** Adicionado `image-rendering` para garantir maior nitidez em fotos de produtos em telas de alta densidade.
 
 ### Catálogo e Filtros (`catalog.js`)
 *   **Renderização Dinâmica:** Lista os produtos automaticamente a partir do `products-data.js`.
