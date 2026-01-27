@@ -10,13 +10,16 @@ Este documento contém a visão geral, estrutura de arquivos e funcionalidades d
 template.shineray.teste/
 ├── docs/                   # Documentação do sistema
 ├── img/                    # Fotos e imagens do projeto (Produtos e Assets)
+│   ├── pos-venda.jpeg      # Imagem da seção Pós-Venda
+│   ├── finacimento.jpeg    # Imagem da seção Financiamento
+│   └── oficina-shineray.jpeg # Imagem da seção Oficina
 ├── index.html              # Página principal (Home)
 ├── catalog.html            # Página de listagem de produtos
 ├── product-detail.html     # Página de detalhes do produto
 ├── sellers.html            # Página de listagem de vendedores
 ├── seller-profile.html     # Página de perfil individual do vendedor
 ├── css/
-│   ├── style.css           # Estilos globais, header, footer e home
+│   ├── style.css           # Estilos globais, header, footer, home e animações
 │   ├── catalog.css         # Estilos da grade de produtos e detalhes
 │   └── hero-slider.css     # Estilos específicos do slider principal da Home
 └── js/
@@ -28,53 +31,52 @@ template.shineray.teste/
     ├── seller-profile.js   # Renderização dinâmica do perfil do vendedor
     ├── home-carousel.js    # Lógica do carrossel de produtos na Home
     ├── hero-slider.js      # Lógica do banner rotativo principal
-    └── carousel.js         # Utilitários genéricos de carrossel
+    ├── carousel.js         # Utilitários genéricos de carrossel
+    └── scroll-animation.js  # Lógica de animação de subida lenta (Scroll Reveal)
 ```
 
 ### Detalhes dos Arquivos Principais:
-*   **`index.html`**: Página de entrada com destaques (Hero Slider), carrossel de produtos e seções informativas.
-*   **`catalog.html`**: Página de listagem completa com suporte a filtros de cor. Renderizada via JS.
-*   **`product-detail.html`**: Página de modelo para exibição dinâmica dos detalhes técnicos da moto.
-*   **`sellers.html`**: Página de contato com a lista de consultores disponíveis.
-*   **`seller-profile.html`**: Página estilo "Linktree" com os contatos específicos de um vendedor.
-*   **`js/products-data.js` & `js/sellers-data.js`**: Arquivos centrais de dados. Adicione ou edite produtos e vendedores aqui.
+*   **`index.html`**: Página de entrada com destaques (Hero Slider), carrossel de produtos e a seção "Por que comprar na Shineray".
+*   **`js/scroll-animation.js`**: Controla as animações que ocorrem quando o usuário rola a página.
+*   **`js/products-data.js` & `js/sellers-data.js`**: Arquivos centrais de dados para fácil manutenção.
 
 ---
 
 ## 🚀 2. Funcionalidades Principais
 
-### Navegação e Layout (`menu.js` & `style.css`)
-*   **Menu Responsivo:** Menu "hambúrguer" adaptável para dispositivos móveis.
-*   **Smooth Scroll:** Rolagem suave ao navegar pelos links da página.
+### Animações de Scroll (`scroll-animation.js` & `style.css`)
+*   **Subida Ultra Lenta:** Implementada uma animação de 7 segundos para os itens da seção "Por que comprar na Shineray".
+*   **Gatilho Inteligente:** A animação de subida de todas as imagens é disparada assim que o título da seção aparece na tela.
+*   **Reset Inteligente:** As imagens voltam para a posição inicial (lá embaixo) apenas quando o usuário sobe a página e a seção "Sobre" sai completamente da tela, garantindo que a animação possa ser vista novamente sem bugar durante a leitura.
+*   **Performance:** Utiliza `IntersectionObserver` para garantir que o navegador não processe animações fora da área visível.
+
+### Seção "Por que comprar na Shineray"
+*   **Identidade Visual:** O título destaca a palavra "Shineray" em vermelho.
+*   **Layout Moderno:** Títulos posicionados acima das imagens, com descrições curtas e diretas abaixo.
+*   **Imagens Customizadas:** Fotos de Pós-Venda, Financiamento e Oficina com cantos arredondados e proporção natural.
 
 ### Home Page Interativa
-*   **Hero Slider (`hero-slider.js`):** Banner rotativo principal com transições e destaques visuais. Agora inclui botões de navegação manual (Anterior/Próximo).
-*   **Carrossel de Produtos (`home-carousel.js`):** Slider horizontal que exibe os produtos em destaque. O botão "Ver Catálogo Completo" foi posicionado logo abaixo do título para melhor conversão.
-
-### Responsividade e Visual
-*   **Imagens Adaptáveis:** Todas as imagens do site utilizam `max-width: 100%` e `height: auto` para garantir que se ajustem a qualquer tamanho de tela (Celular, Tablet, Desktop).
-*   **Performance Visual:** Adicionado `image-rendering` para garantir maior nitidez em fotos de produtos em telas de alta densidade.
+*   **Hero Slider (`hero-slider.js`):** Banner rotativo principal com transições e destaques visuais.
+*   **Carrossel de Produtos (`home-carousel.js`):** Slider horizontal que exibe os produtos em destaque.
 
 ### Catálogo e Filtros (`catalog.js`)
 *   **Renderização Dinâmica:** Lista os produtos automaticamente a partir do `products-data.js`.
-*   **Filtro por Cor:** Permite filtrar a visualização dos produtos (Preto, Vermelho, Azul, Cinza) sem recarregar a página.
+*   **Filtro por Cor:** Permite filtrar a visualização dos produtos sem recarregar a página.
 
 ### Detalhes do Produto (`product-detail.js`)
-*   **Roteamento via Slug:** Identifica o produto via parâmetro URL `?modelo=slug` (ex: `product-detail.html?modelo=urban-150-efi`).
-*   **URL Amigável:** O script converte automaticamente o parâmetro para um hash amigável (`#/inicio/catalogo/nome-do-produto`).
-*   **SEO Dinâmico:** Atualiza o `<title>` e as meta tags (Open Graph) para compartilhamento correto em redes sociais.
+*   **Roteamento via Slug:** Identifica o produto via parâmetro URL `?modelo=slug`.
+*   **SEO Dinâmico:** Atualiza o `<title>` e as meta tags para compartilhamento.
 *   **Galeria Interativa:** Slider de imagens com miniaturas clicáveis.
-*   **Ficha Técnica:** Acordeão expansível com as especificações técnicas (Cilindrada, Potência, etc.).
-*   **Produtos Relacionados:** Sugere aleatoriamente 3 outros modelos ao final da página.
-
-### Módulo de Vendedores (`sellers.html` & `seller-profile.js`)
-*   **Listagem de Consultores:** Exibe a equipe de vendas disponível.
-*   **Perfil Dinâmico:** Página individual carregada via ID (`?id=nome-vendedor`).
-*   **Links de Contato:** Botões de ação rápida para WhatsApp, Instagram e Mapa de Localização.
-
-### Gerenciamento de Dados
-*   **Centralizado:** Toda a informação (preços, specs, fotos, contatos) fica nos arquivos `*-data.js`.
-*   **Manutenção:** Para adicionar um novo produto ou vendedor, basta incluir um novo objeto no array correspondente, sem necessidade de editar múltiplos arquivos HTML (com exceção da lista estática em `sellers.html`).
 
 ---
-*Documentação atualizada em Janeiro de 2026.*
+
+## 🛠️ 3. Manutenção e Atualização
+
+### Adicionar Novas Fotos de Destaque
+As fotos da seção "Sobre" devem ser colocadas na pasta `img/` e as referências atualizadas no `index.html`. O estilo (cantos arredondados) é aplicado automaticamente via classe `.feature img` no `style.css`.
+
+### Ajustar Velocidade da Animação
+Para mudar o tempo de subida, altere o valor de `7.0s` na classe `.scroll-hidden.visible` no arquivo `style.css`.
+
+---
+*Documentação atualizada em Janeiro de 2026 após implementação do módulo de animações.*

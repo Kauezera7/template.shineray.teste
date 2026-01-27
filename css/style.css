@@ -357,6 +357,10 @@ body.nav-open {
     color: var(--primary-color);
 }
 
+.highlight-red {
+    color: var(--secondary-color);
+}
+
 .features {
     display: flex;
     justify-content: space-around;
@@ -368,12 +372,16 @@ body.nav-open {
 }
 
 .feature img {
-    margin-bottom: 15px;
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    border-radius: 8px;
+    margin: 0 auto 20px;
 }
 
 .feature h3 {
     font-size: 1.5rem;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 /* --- RODAPÉ (FOOTER) - O final da página --- */
@@ -700,18 +708,23 @@ footer {
     transform: translateX(0);
 }
 
-@media (max-width: 600px) {
-    .seller-card {
-        flex-direction: column;
-        text-align: center;
-        padding: 20px;
-    }
-    .seller-avatar {
-        margin-right: 0;
-        margin-bottom: 15px;
-    }
-    .seller-arrow {
-        display: none;
-    }
+/* --- ANIMAÇÃO DE SCROLL --- */
+.scroll-hidden {
+    opacity: 0;
+    transform: translateY(300px);
+    transition: none; /* Reset instantâneo quando sair da tela */
+    will-change: transform, opacity;
+}
+
+.scroll-hidden.visible {
+    opacity: 1;
+    transform: translateY(0);
+    /* A animação só acontece quando a classe é ADICIONADA (ao entrar na tela) */
+    transition: opacity 5.0s ease-out, transform 5.0s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* Sem delays para não perder nenhum segundo da subida */
+.feature:nth-child(1), .feature:nth-child(2), .feature:nth-child(3) { 
+    transition-delay: 0s; 
 }
 
