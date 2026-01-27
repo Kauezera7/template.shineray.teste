@@ -172,17 +172,38 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- LÓGICA DE PRODUTOS RELACIONADOS ---
     const relatedContainer = document.getElementById('related-products-container');
     if (relatedContainer && typeof productsData !== 'undefined') {
+        // Limpa o container antes de adicionar
+        relatedContainer.innerHTML = '';
+        
+        // Filtra para não mostrar a moto atual e sorteia
         const availableProducts = productsData.filter(p => p.id !== productId);
-        const shuffled = availableProducts.sort(() => 0.5 - Math.random());
+        const shuffled = [...availableProducts].sort(() => 0.5 - Math.random());
         const selectedProducts = shuffled.slice(0, 3);
 
         selectedProducts.forEach(p => {
+            // Prepara os ícones de destaque (como no catálogo)
+            const highlightsHtml = (p.highlights || [])
+                .map(h => `<span><i class="fas ${h.icon}"></i> ${h.text}</span>`)
+                .join('');
+
              const productHtml = `
                 <a href="product-detail.html?modelo=${p.slug}" class="product-link">
                     <div class="product-card">
+                        <div class="moto-badge">${(p.brand || 'Shineray').toUpperCase()}</div>
                         <img src="${p.mainImage}" alt="${p.name}">
-                        <h3>${p.name}</h3>
-                        <p class="price">${p.price}</p>
+                        
+                        <div class="moto-info">
+                            <h3>${p.name}</h3>
+                            
+                            <div class="moto-specs">
+                                ${highlightsHtml}
+                            </div>
+                            
+                            <div class="moto-price">
+                                <strong>${p.price}</strong>
+                                <small>${p.installment || 'Consulte parcelamento'}</small>
+                            </div>
+                        </div>
                     </div>
                 </a>
             `;

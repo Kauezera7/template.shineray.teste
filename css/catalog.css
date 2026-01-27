@@ -90,9 +90,19 @@
 /* Grade de Produtos */
 .products {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    /* Usamos auto-fit para que o container se ajuste aos itens e centralize-os */
+    grid-template-columns: repeat(auto-fit, 300px); 
     gap: 25px;
     padding: 20px 0;
+    justify-content: center; /* Centraliza a grade na tela */
+}
+
+/* Estilo para centralizar o título "Você também vai gostar" */
+.product-grid h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    color: var(--primary-color);
 }
 
 /* Responsividade Filtros */
@@ -145,7 +155,8 @@
     background: #fff;
     padding: 40px;
     border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    box-shadow: 0 8px 25px rgba(200, 8, 14, 0.2); /* Sombra Vermelha Shineray */
+    border: 1px solid rgba(200, 8, 14, 0.1);
 }
 
 /* --- Lado Esquerdo: Slider de Imagens --- */

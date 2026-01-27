@@ -92,6 +92,7 @@ body.nav-open {
 .logo-footer {
     height: 40px;
     width: auto;
+    margin-bottom: 40px; /* Aumentado para 40px */
 }
 
 /* Estilo para garantir que o link do logo no rodapé seja visível */
@@ -427,6 +428,26 @@ footer {
 .social-links-footer {
     display: flex;
     gap: 15px;
+    justify-content: flex-start;
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        text-align: center;
+    }
+    
+    .footer-section p, .footer-section h3 {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .social-links-footer {
+        justify-content: center;
+    }
+    
+    .footer-links li {
+        text-align: center;
+    }
 }
 
 .social-links-footer a {
