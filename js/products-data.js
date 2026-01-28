@@ -114,33 +114,5 @@ const productsData = [
             "Freios": "Disco Wave Hidráulico (Ambos)",
             "Rodas": "Raiada Off-Road (Aro 21/18)"
         }
-    },
-    {
-        id: 1,
-        slug: "urban-150-efi",
-        name: "Shineray Urban 150 EFI",
-        price: "R$ 13.990,00",
-        installment: "12x de R$ 1.165,83",
-        badge: "Popular",
-        filterCode: "SBM 04-1011",
-        color: "preto",
-        brand: "sbm", 
-        fuel: "gasolina",
-        mainImage: "img/URBAN-150-EFI.webp",
-        highlights: [
-            { icon: "fa-bolt", text: "Design Urbano" },
-            { icon: "fa-cogs", text: "Automática CVT" },
-            { icon: "fa-lightbulb", text: "Farol LED" }
-        ],
-        thumbnails: ["img/URBAN-150-EFI.webp", "img/Storm.webp", "img/Denver.webp"],
-        specifications: {
-            "Cilindrada": "150 cc",
-            "Potência": "12.9 cv",
-            "Câmbio": "Automático CVT",
-            "Partida": "Elétrica e Pedal",
-            "Tanque": "5,5 Litros",
-            "Freios": "Disco Hidráulico (Dianteiro e Traseiro)",
-            "Rodas": "Liga Leve Aro 13"
-        }
-    },/// ... adicione as outras motos seguindo este padrão
+    }
 ];
