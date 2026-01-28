@@ -189,23 +189,23 @@ body.nav-open {
     position: relative;
     width: 100%;
     margin: 0 auto;
-    padding: 0; /* Removido padding para ajuste perfeito */
+    padding: 0 60px; /* Aumentado para dar mais respiro lateral */
 }
 
 .carousel-track-container {
     width: 100%;
-    overflow-x: hidden;
-    padding: 40px 0; /* Mantido respiro vertical */
+    overflow: hidden;
+    padding: 40px 0; /* Aumentado respiro vertical */
 }
 
 .carousel-track {
     display: flex;
-    gap: 0; /* Removido gap para ajuste perfeito */
-    transition: transform 0.5s ease;
+    gap: 30px; /* Aumentado espaço entre cartões */
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .carousel-track .product-link {
-    flex: 0 0 33.333%; /* Ajustado para 33.333% sem gap */
+    flex: 0 0 calc(33.333% - 20px); /* Ajustado para 3 cards com gap de 30px */
     min-width: 280px;
     box-sizing: border-box;
 }
@@ -214,59 +214,58 @@ body.nav-open {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: var(--primary-color);
-    color: white;
+    background: white;
+    color: var(--primary-color);
     border: none;
     border-radius: 50%;
-    width: 50px; /* Botões um pouco maiores */
+    width: 50px;
     height: 50px;
     z-index: 10;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     transition: all 0.3s ease;
 }
 
-.carousel-btn.prev { left: 20px; }
-.carousel-btn.next { right: 20px; }
+.carousel-btn.prev { left: 0; }
+.carousel-btn.next { right: 0; }
 
 .carousel-btn:hover {
     background: var(--secondary-color);
+    color: white;
     transform: translateY(-50%) scale(1.1);
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1100px) {
     .carousel-track .product-link {
-        flex: 0 0 calc(50% - 20px);
+        flex: 0 0 calc(50% - 15px); /* 2 cards */
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .carousel-container {
-        padding: 0; /* Removido padding no mobile */
+        padding: 0 20px;
     }
     
     .carousel-track-container {
-        padding: 20px 0;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 20px;
+    }
+    
+    .carousel-track {
+        gap: 20px;
     }
     
     .carousel-btn {
-        width: 38px;
-        height: 38px;
+        display: none;
     }
-
-    .carousel-btn.prev { left: 10px; }
-    .carousel-btn.next { right: 10px; }
 
     .carousel-track .product-link {
-        flex: 0 0 100%;
+        flex: 0 0 85%;
         scroll-snap-align: center;
-        min-width: 0;
-    }
-
-    .carousel-track {
-        gap: 0; /* Removido gap no celular */
     }
 }
 

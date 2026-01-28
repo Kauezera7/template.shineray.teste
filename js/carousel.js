@@ -1,90 +1,121 @@
-// carousel.js - Gerencia o movimento do carrossel de produtos
-
 document.addEventListener('DOMContentLoaded', () => {
     const track = document.querySelector('.carousel-track');
     const prevBtn = document.querySelector('.carousel-btn.prev');
     const nextBtn = document.querySelector('.carousel-btn.next');
 
-    if (track && prevBtn && nextBtn) {
-        let currentIndex = 0;
-        let autoPlayInterval;
+    if (!track || !prevBtn || !nextBtn) return;
 
-        // Atualiza a posição visual do carrossel
-        const updateCarousel = () => {
-            const productLinks = track.querySelectorAll('.product-link');
-            if (productLinks.length === 0) return;
-            
-            // Pega o estilo computado para saber o tamanho real do gap (espaço)
-            const style = window.getComputedStyle(track);
-            const gap = parseFloat(style.gap) || 0; // Se não tiver gap (mobile), usa 0
+    let currentIndex = 0;
+    let autoPlayInterval;
+    let isTransitioning = false;
+    let itemWidth = 0;
+    let gap = 0;
 
-            const cardWidth = productLinks[0].offsetWidth + gap; 
-            track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-        };
-
-        // Avança para o próximo slide
-        const nextSlide = () => {
-            const productLinks = track.querySelectorAll('.product-link');
-            if (productLinks.length === 0) return;
-
-            const visibleCards = Math.floor(track.parentElement.offsetWidth / productLinks[0].offsetWidth);
-            const totalCards = productLinks.length;
-            
-            if (currentIndex < totalCards - visibleCards) {
-                currentIndex++;
-            } else {
-                currentIndex = 0; // Volta para o início
-            }
-            updateCarousel();
-        };
-
-        // Volta para o slide anterior
-        const prevSlide = () => {
-            const productLinks = track.querySelectorAll('.product-link');
-            if (productLinks.length === 0) return;
-
-            if (currentIndex > 0) {
-                currentIndex--;
-            } else {
-                const visibleCards = Math.floor(track.parentElement.offsetWidth / productLinks[0].offsetWidth);
-                const totalCards = productLinks.length;
-                currentIndex = Math.max(0, totalCards - visibleCards); // Vai para o final
-            }
-            updateCarousel();
-        };
-
-        // Inicia o movimento automático
-        const startAutoPlay = () => {
-            autoPlayInterval = setInterval(nextSlide, 5000); // Muda a cada 5 segundos
-        };
-
-        // Para o movimento automático
-        const stopAutoPlay = () => {
-            clearInterval(autoPlayInterval);
-        };
-
-        // Eventos dos botões
-        nextBtn.addEventListener('click', () => {
-            nextSlide();
-            stopAutoPlay();
-            startAutoPlay(); // Reinicia o timer ao clicar
-        });
-
-        prevBtn.addEventListener('click', () => {
-            prevSlide();
-            stopAutoPlay();
-            startAutoPlay(); // Reinicia o timer ao clicar
-        });
-
-        // Pausa quando o mouse estiver sobre o carrossel
-        const container = document.querySelector('.carousel-container');
-        if (container) {
-            container.addEventListener('mouseenter', stopAutoPlay);
-            container.addEventListener('mouseleave', startAutoPlay);
+    // Função para inicializar o carrossel
+    const initCarousel = () => {
+        const items = Array.from(track.children);
+        if (items.length === 0) {
+            // Se ainda não tem itens, tenta novamente em 50ms
+            setTimeout(initCarousel, 50);
+            return;
         }
 
-        // Inicia o auto-play e lida com redimensionamento da janela
+        // 1. Clonar itens para o loop infinito
+        items.forEach(item => {
+            const clone = item.cloneNode(true);
+            track.appendChild(clone);
+        });
+
+        // 2. Calcular dimensões iniciais
+        updateDimensions();
+        
+        // 3. Iniciar Autoplay
         startAutoPlay();
-        window.addEventListener('resize', updateCarousel);
+    };
+
+    const updateDimensions = () => {
+        const items = track.querySelectorAll('.product-link');
+        if (items.length > 0) {
+            itemWidth = items[0].offsetWidth;
+            const style = window.getComputedStyle(track);
+            gap = parseFloat(style.gap) || 0;
+        }
+    };
+
+    const moveToIndex = (index, animated = true) => {
+        if (isTransitioning && animated) return;
+        
+        if (animated) isTransitioning = true;
+        
+        track.style.transition = animated ? 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)' : 'none';
+        
+        const offset = index * (itemWidth + gap);
+        track.style.transform = `translateX(-${offset}px)`;
+
+        if (animated) {
+            setTimeout(() => {
+                isTransitioning = false;
+                checkLoop();
+            }, 600);
+        }
+    };
+
+    const checkLoop = () => {
+        const items = track.querySelectorAll('.product-link');
+        const totalOriginalItems = items.length / 2;
+
+        if (currentIndex >= totalOriginalItems) {
+            currentIndex = 0;
+            moveToIndex(currentIndex, false);
+        } else if (currentIndex < 0) {
+            currentIndex = totalOriginalItems - 1;
+            moveToIndex(currentIndex, false);
+        }
+    };
+
+    const nextSlide = () => {
+        if (isTransitioning) return;
+        currentIndex++;
+        moveToIndex(currentIndex);
+    };
+
+    const prevSlide = () => {
+        if (isTransitioning) return;
+        currentIndex--;
+        moveToIndex(currentIndex);
+    };
+
+    const startAutoPlay = () => {
+        stopAutoPlay();
+        autoPlayInterval = setInterval(nextSlide, 5000);
+    };
+
+    const stopAutoPlay = () => {
+        clearInterval(autoPlayInterval);
+    };
+
+    // Eventos
+    nextBtn.addEventListener('click', () => {
+        nextSlide();
+        startAutoPlay();
+    });
+
+    prevBtn.addEventListener('click', () => {
+        prevSlide();
+        startAutoPlay();
+    });
+
+    const container = document.querySelector('.carousel-container');
+    if (container) {
+        container.addEventListener('mouseenter', stopAutoPlay);
+        container.addEventListener('mouseleave', startAutoPlay);
     }
+
+    window.addEventListener('resize', () => {
+        updateDimensions();
+        moveToIndex(currentIndex, false);
+    });
+
+    // Iniciar processo de verificação de carregamento
+    initCarousel();
 });
