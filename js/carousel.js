@@ -14,7 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const productLinks = track.querySelectorAll('.product-link');
             if (productLinks.length === 0) return;
             
-            const cardWidth = productLinks[0].offsetWidth + 20; // 20 é o espaçamento (gap)
+            // Pega o estilo computado para saber o tamanho real do gap (espaço)
+            const style = window.getComputedStyle(track);
+            const gap = parseFloat(style.gap) || 0; // Se não tiver gap (mobile), usa 0
+
+            const cardWidth = productLinks[0].offsetWidth + gap; 
             track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
         };
 

@@ -43,40 +43,47 @@
                 <h1 class="page-title">Catálogo de Motos</h1>
                 <p class="page-subtitle">Encontre a moto perfeita para você</p>
                 
-                <div class="filters">
-                    <div class="filter-group">
-                        <label for="color-filter">Filtrar por Cor:</label>
-                        <select id="color-filter" class="filter-select">
-                            <option value="all">Todas as cores</option>
-                            <option value="vermelho">Vermelho</option>
-                            <option value="preto">Preto</option>
-                            <option value="branco">Branco</option>
-                            <option value="azul">Azul</option>
-                            <option value="cinza">Cinza</option>
-                        </select>
+                <!-- Botão para abrir/fechar filtros -->
+                <button id="toggle-filters" class="btn-filter-toggle">
+                    <i class="fas fa-filter"></i> Filtrar Resultados <i class="fas fa-chevron-down"></i>
+                </button>
+
+                <div class="filters-container" id="filters-container">
+                    <div class="filters">
+                        <div class="filter-group">
+                            <label for="color-filter">Filtrar por Cor:</label>
+                            <select id="color-filter" class="filter-select">
+                                <option value="all">Todas as cores</option>
+                                <option value="vermelho">Vermelho</option>
+                                <option value="preto">Preto</option>
+                                <option value="branco">Branco</option>
+                                <option value="azul">Azul</option>
+                                <option value="cinza">Cinza</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="fuel-filter">Filtrar por Combustível:</label>
+                            <select id="fuel-filter" class="filter-select">
+                                <option value="all">Todos</option>
+                                <option value="gasolina">Gasolina</option>
+                                <option value="eletrica">Elétrica</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="brand-filter">Filtrar por Marca:</label>
+                            <select id="brand-filter" class="filter-select">
+                                <option value="all">Todas as marcas</option>
+                                <option value="shineray">Shineray</option>
+                                <option value="sbm">SBM</option>
+                            </select>
+                        </div>
+                        
+                        <button id="reset-filters" class="btn btn-secondary">
+                            <i class="fas fa-redo"></i> Limpar Filtros
+                        </button>
                     </div>
-                    
-                    <div class="filter-group">
-                        <label for="fuel-filter">Filtrar por Combustível:</label>
-                        <select id="fuel-filter" class="filter-select">
-                            <option value="all">Todos</option>
-                            <option value="gasolina">Gasolina</option>
-                            <option value="eletrica">Elétrica</option>
-                        </select>
-                    </div>
-                    
-                    <div class="filter-group">
-                        <label for="brand-filter">Filtrar por Marca:</label>
-                        <select id="brand-filter" class="filter-select">
-                            <option value="all">Todas as marcas</option>
-                            <option value="shineray">Shineray</option>
-                            <option value="sbm">SBM</option>
-                        </select>
-                    </div>
-                    
-                    <button id="reset-filters" class="btn btn-secondary">
-                        <i class="fas fa-redo"></i> Limpar Filtros
-                    </button>
                 </div>
             </div>
         </section>

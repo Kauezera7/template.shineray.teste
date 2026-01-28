@@ -20,16 +20,66 @@
 .page-subtitle {
     font-size: 1.1rem;
     color: #666;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
+}
+
+/* Novo Botão de Toggle do Filtro */
+.btn-filter-toggle {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.btn-filter-toggle:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+.btn-filter-toggle i.fa-chevron-down {
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+.btn-filter-toggle.active i.fa-chevron-down {
+    transform: rotate(180deg);
+}
+
+/* Container que esconde/mostra os filtros */
+.filters-container {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+    background: #fdfdfd;
+    border-radius: 12px;
+}
+
+.filters-container.active {
+    max-height: 1000px;
+    transition: max-height 0.5s cubic-bezier(1, 0, 1, 0);
+    padding: 20px 0;
+    border: 1px solid #eee;
+    margin-top: 10px;
 }
 
 /* Container dos Inputs de Filtro */
 .filters {
     display: flex;
     justify-content: center;
-    align-items: flex-end; /* Alinha os inputs e o botão pela base */
+    align-items: flex-end; 
     gap: 20px;
-    flex-wrap: wrap; /* Permite quebrar linha no mobile */
+    flex-wrap: wrap; 
+    padding: 10px;
 }
 
 .filter-group {

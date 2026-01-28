@@ -6,6 +6,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const fuelFilter = document.getElementById('fuel-filter');
     const brandFilter = document.getElementById('brand-filter');
     const resetBtn = document.getElementById('reset-filters');
+    
+    // Toggle de Filtros
+    const toggleBtn = document.getElementById('toggle-filters');
+    const filtersContainer = document.getElementById('filters-container');
+
+    if (toggleBtn && filtersContainer) {
+        toggleBtn.addEventListener('click', () => {
+            toggleBtn.classList.toggle('active');
+            filtersContainer.classList.toggle('active');
+        });
+    }
 
     /**
      * FUNÇÃO PRINCIPAL: Renderizar Produtos com Novo Design
