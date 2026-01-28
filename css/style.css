@@ -86,11 +86,16 @@ body.nav-open {
     width: auto;
 }
 
-/* Imagem do logo no rodapé */
+/* Coluna 1: Logo e Empresa */
+.footer-section:first-child {
+    display: block;
+}
+
 .logo-footer {
     height: 40px;
     width: auto;
-    margin-bottom: 40px; /* Aumentado para 40px */
+    margin-bottom: 20px;
+    display: block;
 }
 
 /* Estilo para garantir que o link do logo no rodapé seja visível */
@@ -598,6 +603,10 @@ footer {
         font-size: 1.5rem;
     }
 
+    .hamburger.active span {
+        background-color: white;
+    }
+
     .hamburger.active span:nth-child(1) {
         transform: rotate(45deg) translate(5px, 5px);
     }
@@ -606,6 +615,11 @@ footer {
     }
     .hamburger.active span:nth-child(3) {
         transform: rotate(-45deg) translate(7px, -6px);
+    }
+
+    /* Inverte a cor do logo para branco quando o menu estiver aberto */
+    .navbar:has(.nav-links.active) .logo-img {
+        filter: brightness(0) invert(1);
     }
 
     .hero h1 {
