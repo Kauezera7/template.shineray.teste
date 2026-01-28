@@ -246,7 +246,7 @@ body.nav-open {
 
 @media (max-width: 768px) {
     .carousel-container {
-        padding: 0 20px;
+        padding: 0;
     }
     
     .carousel-track-container {
@@ -256,7 +256,7 @@ body.nav-open {
     }
     
     .carousel-track {
-        gap: 20px;
+        gap: 0;
     }
     
     .carousel-btn {
@@ -264,8 +264,9 @@ body.nav-open {
     }
 
     .carousel-track .product-link {
-        flex: 0 0 85%;
-        scroll-snap-align: center;
+        flex: 0 0 100%;
+        scroll-snap-align: start;
+        padding: 0 20px; /* Mantém uma margem interna para o card não tocar as bordas da tela */
     }
 }
 
@@ -739,7 +740,102 @@ footer {
     transform: translateX(0);
 }
 
-/* --- ANIMAÇÃO DE SCROLL --- */
+/* --- SEÇÃO DE LOCALIZAÇÃO --- */
+.location-section {
+    padding: 100px 0;
+    background-color: #fff;
+}
+
+.location-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.location-info h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.location-desc {
+    color: #666;
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+}
+
+.info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.info-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.info-icon {
+    width: 50px;
+    height: 50px;
+    background-color: #f8f9fa;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    border: 1px solid #eee;
+}
+
+.info-text h3 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    color: var(--primary-color);
+}
+
+.info-text p {
+    color: #555;
+    line-height: 1.5;
+}
+
+.location-actions {
+    margin-top: 40px;
+}
+
+.location-map {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 992px) {
+    .location-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .location-info {
+        text-align: center;
+    }
+    
+    .info-list {
+        align-items: center;
+    }
+    
+    .info-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .location-map iframe {
+        height: 350px;
+    }
+}
 .scroll-hidden {
     opacity: 0;
     transform: translateY(300px);
