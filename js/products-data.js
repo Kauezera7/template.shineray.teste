@@ -7,6 +7,7 @@ const productsData = [
         id: 1,
         slug: "urban-150-efi",
         name: "Shineray Urban 150 EFI",
+        category: "scooter",
         price: "R$ 13.990,00",
         installment: "12x de R$ 1.165,83",
         badge: "Popular",
@@ -35,6 +36,7 @@ const productsData = [
         id: 2,
         slug: "storm-125",
         name: "Shineray Storm",
+        category: "motocicleta",
         price: "R$ 11.490,00",
         installment: "12x de R$ 957,50",
         badge: "Destaque",
@@ -63,6 +65,7 @@ const productsData = [
         id: 3,
         slug: "denver-125",
         name: "Shineray Denver",
+        category: "motocicleta",
         price: "R$ 9.990,00",
         installment: "12x de R$ 832,50",
         badge: "Nova",
@@ -91,6 +94,7 @@ const productsData = [
         id: 4,
         slug: "shi-250f",
         name: "Shineray SHI 250F",
+        category: "motocicleta",
         price: "R$ 15.990,00",
         installment: "12x de R$ 1.332,50",
         badge: "Off-Road",
@@ -113,6 +117,35 @@ const productsData = [
             "Tanque": "12 Litros",
             "Freios": "Disco Wave Hidráulico (Ambos)",
             "Rodas": "Raiada Off-Road (Aro 21/18)"
+        }
+    },
+    {
+        id: 5,
+        slug: "shineray-se1",
+        name: "Shineray SE1",
+        category: "motocicleta-eletrica",
+        price: "R$ 14.990,00",
+        installment: "12x de R$ 1.249,16",
+        badge: "Ecológica",
+        filterCode: "SE1-2025",
+        colors: ["branco", "preto", "azul"],
+        brand: "shineray",
+        fuel: "eletrica",
+        mainImage: "img/URBAN-150-EFI.webp", // Usando imagem existente como exemplo
+        highlights: [
+            { icon: "fa-leaf", text: "Zero Emissão" },
+            { icon: "fa-battery-full", text: "Bateria de Lítio" },
+            { icon: "fa-volume-mute", text: "Silenciosa" }
+        ],
+        thumbnails: ["img/URBAN-150-EFI.webp"],
+        specifications: {
+            "Motor": "2000W",
+            "Velocidade Máx.": "60 km/h",
+            "Autonomia": "Até 60 km",
+            "Bateria": "Lítio Removível 60V 24Ah",
+            "Tempo de Recarga": "6 a 8 horas",
+            "Freios": "Disco (Dianteiro) / Tambor (Traseiro)",
+            "Rodas": "Aro 10"
         }
     }
 ];

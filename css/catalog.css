@@ -239,10 +239,31 @@
     color: var(--secondary-color);
 }
 
+/* ESTILO SELECIONADO (MULTI-SELECT) */
+.custom-option.selected {
+    background-color: #fdf2f2;
+    color: var(--secondary-color);
+    font-weight: 700;
+}
+
+.custom-option.selected::after {
+    content: '\f00c'; /* Check icon */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    margin-left: auto;
+    font-size: 0.9rem;
+}
+
 .custom-option .count {
     margin-left: auto;
     font-size: 0.8rem;
     opacity: 0.6;
+}
+
+/* Ajuste para o count quando selecionado, pois o check ocupa o lugar */
+.custom-option.selected .count {
+    margin-left: 10px; /* Reduz espaço pois tem o check */
+    margin-right: 10px;
 }
 
 .custom-option .color-dot,

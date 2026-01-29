@@ -86,6 +86,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const colorsList = product.colors || [product.color] || ['preto'];
     const colorSwatchesHtml = colorsList.map(c => `<div class="swatch ${c}"></div>`).join('');
 
+    // 2.6 Prepara o tipo de combustível e ícone
+    const fuelType = product.fuel || 'gasolina';
+    const fuelIcon = fuelType === 'eletrica' ? 'fa-bolt' : 'fa-gas-pump';
+    const fuelLabel = fuelType.charAt(0).toUpperCase() + fuelType.slice(1);
+
     // 3. Injeta tudo no container principal da página
     productDetailContainer.innerHTML = `
         <div class="product-detail-layout">
@@ -108,6 +113,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     <i class="fas fa-credit-card"></i> ${product.installment || 'Consulte condições de parcelamento'}
                 </p>
                 
+                <div class="fuel-info" style="margin-bottom: 20px; font-weight: 600; color: #444; display: flex; align-items: center; gap: 8px;">
+                    <i class="fas ${fuelIcon}" style="color: var(--secondary-color); width: 20px;"></i>
+                    <span>Combustível: <strong>${fuelLabel}</strong></span>
+                </div>
+
                 <div class="color-selection">
                     <span>Cores disponíveis:</span>
                     <div class="color-swatches">
@@ -195,34 +205,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const shuffled = [...availableProducts].sort(() => 0.5 - Math.random());
         const selectedProducts = shuffled.slice(0, 3);
 
-        selectedProducts.forEach(p => {
-            // Prepara os ícones de destaque (como no catálogo)
-            const highlightsHtml = (p.highlights || [])
-                .map(h => `<span><i class="fas ${h.icon}"></i> ${h.text}</span>`)
-                .join('');
-
-             const productHtml = `
-                <a href="product-detail.html?modelo=${p.slug}" class="product-link">
-                    <div class="product-card">
-                        <div class="moto-badge">${(p.brand || 'Shineray').toUpperCase()}</div>
-                        <img src="${p.mainImage}" alt="${p.name}">
-                        
-                        <div class="moto-info">
-                            <h3>${p.name}</h3>
-                            
-                            <div class="moto-specs">
-                                ${highlightsHtml}
-                            </div>
-                            
-                            <div class="moto-price">
-                                <strong>${p.price}</strong>
-                                <small>${p.installment || 'Consulte parcelamento'}</small>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            `;
-            relatedContainer.innerHTML += productHtml;
-        });
+        relatedContainer.innerHTML = selectedProducts.map((p, index) => renderProductCard(p, index)).join('');
     }
 });
