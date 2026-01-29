@@ -1,6 +1,6 @@
-# Documentação do Projeto: Shineray
+# 🏍️ Shineray Colombo - Template de Catálogo Digital
 
-Este documento contém a visão geral, estrutura de arquivos e funcionalidades do template Shineray.
+Este projeto é um template moderno, dinâmico e de alta performance para concessionárias Shineray. Desenvolvido com foco em experiência do usuário (UX), SEO e facilidade de manutenção, o sistema funciona como um Catálogo Digital interativo.
 
 ---
 
@@ -9,74 +9,81 @@ Este documento contém a visão geral, estrutura de arquivos e funcionalidades d
 ```text
 template.shineray.teste/
 ├── docs/                   # Documentação do sistema
-├── img/                    # Fotos e imagens do projeto (Produtos e Assets)
-│   ├── pos-venda.jpeg      # Imagem da seção Pós-Venda
-│   ├── finacimento.jpeg    # Imagem da seção Financiamento
-│   └── oficina-shineray.jpeg # Imagem da seção Oficina
-├── index.html              # Página principal (Home)
-├── catalog.html            # Página de listagem de produtos
-├── product-detail.html     # Página de detalhes do produto
-├── sellers.html            # Página de listagem de vendedores
-├── seller-profile.html     # Página de perfil individual do vendedor
+├── img/                    # Assets visuais (Produtos, Banners e Ícones)
 ├── css/
-│   ├── style.css           # Estilos globais, header, footer, home e animações
-│   ├── catalog.css         # Estilos da grade de produtos e detalhes
-│   └── hero-slider.css     # Estilos específicos do slider principal da Home
+│   ├── style.css           # Estilos globais, Layout Base e Animações
+│   ├── catalog.css         # Grid de produtos e design dos filtros
+│   ├── hero-slider.css     # Estilos do banner principal
+│   └── seller-profile.css  # Layout estilo "Linktree" para vendedores
 └── js/
-    ├── products-data.js    # "Banco de dados" de produtos (Array de objetos)
-    ├── sellers-data.js     # "Banco de dados" de vendedores (Array de objetos)
-    ├── menu.js             # Lógica do menu hambúrguer responsivo
-    ├── catalog.js          # Renderização e filtros da página de catálogo
-    ├── product-detail.js   # Renderização dinâmica dos detalhes do produto
-    ├── seller-profile.js   # Renderização dinâmica do perfil do vendedor
-    ├── home-carousel.js    # Lógica do carrossel de produtos na Home
-    ├── hero-slider.js      # Lógica do banner rotativo principal
-    ├── carousel.js         # Utilitários genéricos de carrossel
-    └── scroll-animation.js  # Lógica de animação de subida lenta (Scroll Reveal)
+    ├── config.js           # ⚙️ CONFIGURAÇÃO GLOBAL (WhatsApp, Endereço, Redes)
+    ├── products-data.js    # 📦 Banco de dados de produtos
+    ├── sellers-data.js     # 👥 Banco de dados de vendedores
+    ├── render-utils.js     # 🛠️ Utilitários de renderização de componentes
+    ├── menu.js             # Navegação responsiva e scroll suave
+    ├── catalog.js          # Lógica de filtros avançados e listagem
+    ├── product-detail.js   # Página dinâmica de detalhes (SEO-friendly)
+    ├── seller-profile.js   # Gerador de perfil de vendedor dinâmico
+    ├── home-carousel.js    # Carrossel de destaques da Home
+    ├── hero-slider.js      # Controle do banner rotativo
+    └── scroll-animation.js # Efeitos de revelação ao rolar a página
 ```
 
-### Detalhes dos Arquivos Principais:
-*   **`index.html`**: Página de entrada com destaques (Hero Slider), carrossel de produtos e a seção "Por que comprar na Shineray".
-*   **`js/scroll-animation.js`**: Controla as animações que ocorrem quando o usuário rola a página.
-*   **`js/products-data.js` & `js/sellers-data.js`**: Arquivos centrais de dados para fácil manutenção.
+---
+
+## 🚀 2. Funcionalidades de Destaque
+
+### ⚙️ Configuração Centralizada (`js/config.js`)
+O coração da manutenção do site. Através deste arquivo, é possível alterar em um único lugar:
+- **Contatos:** Números de WhatsApp (formatado e link) e Telefone.
+- **Localização:** Endereço completo e link direto para o Google Maps.
+- **Redes Sociais:** Links para Instagram, Facebook e YouTube.
+- **Dados da Empresa:** CNPJ e Copyright.
+*O script propaga essas mudanças automaticamente para todos os ícones, botões e textos do site.*
+
+### 📦 Catálogo Inteligente com Filtros Avançados
+Diferente de sites estáticos comuns, o catálogo oferece:
+- **Múltipla Seleção:** Filtre simultaneamente por Categoria, Cor, Combustível (Gasolina/Elétrica) e Marca.
+- **Contagem Dinâmica:** Os filtros mostram a quantidade de produtos disponíveis em cada categoria em tempo real.
+- **Renderização Dinâmica:** Produtos são gerados a partir do `products-data.js`, facilitando a atualização do estoque.
+
+### 📄 Detalhes do Produto e SEO
+- **Páginas Dinâmicas:** Uma única página (`product-detail.html`) atende a todos os produtos via slugs na URL.
+- **SEO Automático:** Atualiza o `title` do navegador e as `meta-tags` de descrição para melhor indexação e compartilhamento em redes sociais.
+- **Ficha Técnica:** Sistema de acordeão para especificações técnicas detalhadas.
+
+### 👤 Perfil de Vendedor (Estilo Linktree)
+Páginas personalizadas para cada consultor de vendas, permitindo:
+- **Links Diretos:** Botões rápidos para o WhatsApp do vendedor, Instagram e Localização.
+- **Fidelização:** O cliente pode salvar o link direto do seu consultor preferido.
+
+### ✨ Experiência Visual (UX)
+- **Scroll Reveal:** Animações suaves de entrada conforme o usuário navega.
+- **Hero Slider:** Banner de impacto na página inicial com suporte a múltiplas imagens.
+- **Carrossel de Produtos:** Navegação horizontal intuitiva para os modelos em destaque.
 
 ---
 
-## 🚀 2. Funcionalidades Principais
+## 🛠️ 3. Guia de Manutenção
 
-### Animações de Scroll (`scroll-animation.js` & `style.css`)
-*   **Subida Ultra Lenta:** Implementada uma animação de 7 segundos para os itens da seção "Por que comprar na Shineray".
-*   **Gatilho Inteligente:** A animação de subida de todas as imagens é disparada assim que o título da seção aparece na tela.
-*   **Reset Inteligente:** As imagens voltam para a posição inicial (lá embaixo) apenas quando o usuário sobe a página e a seção "Sobre" sai completamente da tela, garantindo que a animação possa ser vista novamente sem bugar durante a leitura.
-*   **Performance:** Utiliza `IntersectionObserver` para garantir que o navegador não processe animações fora da área visível.
+### Atualizar Informações da Loja
+Abra o arquivo `js/config.js` e altere os valores dentro do objeto `Config`.
 
-### Seção "Por que comprar na Shineray"
-*   **Identidade Visual:** O título destaca a palavra "Shineray" em vermelho.
-*   **Layout Moderno:** Títulos posicionados acima das imagens, com descrições curtas e diretas abaixo.
-*   **Imagens Customizadas:** Fotos de Pós-Venda, Financiamento e Oficina com cantos arredondados e proporção natural.
+### Adicionar uma Nova Moto
+1. Adicione a imagem na pasta `img/`.
+2. No arquivo `js/products-data.js`, adicione um novo objeto ao array `productsData` seguindo o padrão existente.
 
-### Home Page Interativa
-*   **Hero Slider (`hero-slider.js`):** Banner rotativo principal com transições e destaques visuais.
-*   **Carrossel de Produtos (`home-carousel.js`):** Slider horizontal que exibe os produtos em destaque.
-
-### Catálogo e Filtros (`catalog.js`)
-*   **Renderização Dinâmica:** Lista os produtos automaticamente a partir do `products-data.js`.
-*   **Filtro por Cor:** Permite filtrar a visualização dos produtos sem recarregar a página.
-
-### Detalhes do Produto (`product-detail.js`)
-*   **Roteamento via Slug:** Identifica o produto via parâmetro URL `?modelo=slug`.
-*   **SEO Dinâmico:** Atualiza o `<title>` e as meta tags para compartilhamento.
-*   **Galeria Interativa:** Slider de imagens com miniaturas clicáveis.
+### Adicionar um Novo Vendedor
+1. No arquivo `js/sellers-data.js`, adicione os dados do novo consultor.
+2. O perfil será acessível via `seller-profile.html?id=id-do-vendedor`.
 
 ---
 
-## 🛠️ 3. Manutenção e Atualização
-
-### Adicionar Novas Fotos de Destaque
-As fotos da seção "Sobre" devem ser colocadas na pasta `img/` e as referências atualizadas no `index.html`. O estilo (cantos arredondados) é aplicado automaticamente via classe `.feature img` no `style.css`.
-
-### Ajustar Velocidade da Animação
-Para mudar o tempo de subida, altere o valor de `7.0s` na classe `.scroll-hidden.visible` no arquivo `style.css`.
+## 💻 4. Tecnologias Utilizadas
+- **HTML5 / CSS3** (Variáveis CSS e Flexbox/Grid)
+- **JavaScript Vanilla** (ES6+)
+- **Font Awesome** (Ícones)
+- **Google Fonts** (Montserrat)
 
 ---
-*Documentação atualizada em Janeiro de 2026 após implementação do módulo de animações.*
+*Documentação atualizada em Janeiro de 2026.*
