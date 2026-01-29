@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <h3>${product.name}</h3>
                                 
                                 <div class="moto-specs">
+                                    <span><i class="fas fa-gas-pump"></i> ${(product.fuel || 'gasolina').charAt(0).toUpperCase() + (product.fuel || 'gasolina').slice(1)}</span>
                                     ${highlightsHtml}
                                 </div>
                                 

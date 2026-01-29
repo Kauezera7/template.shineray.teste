@@ -57,16 +57,13 @@
 
 /* Container que esconde/mostra os filtros */
 .filters-container {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+    display: none; /* Esconde direto */
     background: #fdfdfd;
     border-radius: 12px;
 }
 
 .filters-container.active {
-    max-height: 1000px;
-    transition: max-height 0.5s cubic-bezier(1, 0, 1, 0);
+    display: block; /* Abre direto */
     padding: 20px 0;
     border: 1px solid #eee;
     margin-top: 10px;
@@ -147,6 +144,24 @@
     justify-content: center; /* Centraliza a grade na tela */
 }
 
+/* --- ANIMAÇÃO DE ENTRADA DOS PRODUTOS --- */
+.product-card-animated {
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
 /* Estilo para centralizar o título "Você também vai gostar" */
 .product-grid h2 {
     text-align: center;
@@ -155,16 +170,103 @@
     color: var(--primary-color);
 }
 
-/* Responsividade Filtros */
-@media (max-width: 768px) {
-    .filters {
-        flex-direction: column;
-        align-items: stretch;
-    }
-    .filter-select, .btn-secondary {
-        width: 100%;
-    }
+/* --- CUSTOM COLOR DROPDOWN --- */
+.custom-select-wrapper {
+    position: relative;
+    user-select: none;
+    width: 220px;
 }
+
+.custom-select-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 15px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.custom-select-trigger:hover {
+    border-color: var(--secondary-color);
+}
+
+.custom-options {
+    position: absolute;
+    display: none;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border: 1px solid #ddd;
+    border-top: 0;
+    background: #fff;
+    transition: all 0.5s;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: 100;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.custom-select-wrapper.open .custom-options {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+}
+
+.custom-option {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.custom-option:hover {
+    background: #fdf2f2;
+    color: var(--secondary-color);
+}
+
+.custom-option .count {
+    margin-left: auto;
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
+
+.custom-option .color-dot,
+.custom-select-trigger .color-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,0.1);
+    flex-shrink: 0;
+}
+
+/* Cores das Bolinhas do Filtro */
+.color-dot.all { background: conic-gradient(red, yellow, green, cyan, blue, magenta, red); }
+.color-dot.preto { background-color: #000; }
+.color-dot.vermelho { background-color: #C8080E; }
+.color-dot.azul { background-color: #0056b3; }
+.color-dot.branco { background-color: #ffffff; border: 1px solid #ddd; }
+.color-dot.cinza { background-color: #808080; }
+.color-dot.laranja { background-color: #ff8c00; }
+.color-dot.verde { background-color: #228b22; }
+.color-dot.dourado { background-color: #ffd700; }
+
+
+
 
 
 /* =========================================
@@ -303,8 +405,66 @@
     font-size: 2rem;
     color: var(--secondary-color);
     font-weight: 700;
+    margin-bottom: 20px;
+}
+
+/* --- SINALIZADOR DE CORES --- */
+.color-selection {
     margin-bottom: 30px;
 }
+
+.color-selection span {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    color: #444;
+}
+
+.color-swatches {
+    display: flex;
+    gap: 12px;
+}
+
+.swatch {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 2px solid #eee;
+    cursor: default; /* Como é informativo, não precisa de pointer */
+    position: relative;
+    transition: transform 0.3s;
+}
+
+.swatch.active {
+    border-color: var(--secondary-color);
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(200, 8, 14, 0.2);
+}
+
+.swatch.active::after {
+    content: '\f00c'; /* Check do FontAwesome */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    font-size: 12px;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+/* Cores Mapeadas */
+.swatch.preto { background-color: #000; }
+.swatch.vermelho { background-color: #C8080E; }
+.swatch.azul { background-color: #0056b3; }
+.swatch.branco { background-color: #ffffff; border: 1px solid #ddd; }
+.swatch.cinza { background-color: #808080; }
+.swatch.laranja { background-color: #ff8c00; }
+.swatch.verde { background-color: #228b22; }
+.swatch.dourado { background-color: #ffd700; }
+
 
 /* Botão de Contato (WhatsApp) */
 .btn-contact {

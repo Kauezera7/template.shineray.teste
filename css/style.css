@@ -852,16 +852,15 @@ footer {
 }
 .scroll-hidden {
     opacity: 0;
-    transform: translateY(300px);
-    transition: none; /* Reset instantâneo quando sair da tela */
-    will-change: transform, opacity;
+    transform: translateY(50px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .scroll-hidden.visible {
     opacity: 1;
     transform: translateY(0);
-    /* A animação só acontece quando a classe é ADICIONADA (ao entrar na tela) */
-    transition: opacity 5.0s ease-out, transform 5.0s cubic-bezier(0.165, 0.84, 0.44, 1);
+    /* Animação mais rápida e fluída para evitar travamentos */
+    transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 /* Sem delays para não perder nenhum segundo da subida */

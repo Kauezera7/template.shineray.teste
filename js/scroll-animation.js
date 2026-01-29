@@ -14,10 +14,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (entry.isIntersecting) {
                 // Assim que o título aparecer, TODAS as imagens começam a subir
                 features.forEach(f => f.classList.add('visible'));
+                // Opcional: Parar de observar após animar para economizar recursos
+                // titleObserver.unobserve(sectionTitle); 
             }
         });
     }, {
-        threshold: 0.1 // Começa assim que 10% do título aparecer
+        threshold: 0.1
     });
 
     if (sectionTitle) {

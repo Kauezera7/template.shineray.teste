@@ -82,6 +82,10 @@ document.addEventListener('DOMContentLoaded', () => {
         specificationsHtml += `<li><strong>${key}:</strong> <span>${product.specifications[key]}</span></li>`;
     }
 
+    // 2.5 Prepara as Bolinhas de Cores
+    const colorsList = product.colors || [product.color] || ['preto'];
+    const colorSwatchesHtml = colorsList.map(c => `<div class="swatch ${c}"></div>`).join('');
+
     // 3. Injeta tudo no container principal da página
     productDetailContainer.innerHTML = `
         <div class="product-detail-layout">
@@ -100,7 +104,18 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="product-info">
                 <h1 id="product-name">${product.name}</h1>
                 <p class="price" id="product-price">${product.price}</p>
-                <a href="https://wa.me/5500000000000" class="btn btn-contact" target="_blank">Falar com um Vendedor</a>
+                <p class="installment" style="margin-top: -15px; margin-bottom: 25px; color: #666; font-weight: 600;">
+                    <i class="fas fa-credit-card"></i> ${product.installment || 'Consulte condições de parcelamento'}
+                </p>
+                
+                <div class="color-selection">
+                    <span>Cores disponíveis:</span>
+                    <div class="color-swatches">
+                        ${colorSwatchesHtml}
+                    </div>
+                </div>
+
+                <a href="#" class="btn btn-contact config-whatsapp-link" target="_blank">Falar com um Vendedor</a>
                 
                 <div class="specifications accordion">
                     <div class="accordion-header">

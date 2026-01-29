@@ -51,33 +51,45 @@
                 <div class="filters-container" id="filters-container">
                     <div class="filters">
                         <div class="filter-group">
-                            <label for="color-filter">Filtrar por Cor:</label>
-                            <select id="color-filter" class="filter-select">
-                                <option value="all">Todas as cores</option>
-                                <option value="vermelho">Vermelho</option>
-                                <option value="preto">Preto</option>
-                                <option value="branco">Branco</option>
-                                <option value="azul">Azul</option>
-                                <option value="cinza">Cinza</option>
-                            </select>
+                            <label>Filtrar por Cor:</label>
+                            <div class="custom-select-wrapper" id="color-dropdown">
+                                <div class="custom-select-trigger">
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <div class="color-dot all"></div>
+                                        <span>Todas as cores</span>
+                                    </div>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="custom-options">
+                                    <!-- JS vai preencher aqui -->
+                                </div>
+                            </div>
                         </div>
                         
                         <div class="filter-group">
-                            <label for="fuel-filter">Filtrar por Combustível:</label>
-                            <select id="fuel-filter" class="filter-select">
-                                <option value="all">Todos</option>
-                                <option value="gasolina">Gasolina</option>
-                                <option value="eletrica">Elétrica</option>
-                            </select>
+                            <label>Combustível:</label>
+                            <div class="custom-select-wrapper" id="fuel-dropdown">
+                                <div class="custom-select-trigger">
+                                    <span>Todos</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="custom-options">
+                                    <!-- JS vai preencher -->
+                                </div>
+                            </div>
                         </div>
                         
                         <div class="filter-group">
-                            <label for="brand-filter">Filtrar por Marca:</label>
-                            <select id="brand-filter" class="filter-select">
-                                <option value="all">Todas as marcas</option>
-                                <option value="shineray">Shineray</option>
-                                <option value="sbm">SBM</option>
-                            </select>
+                            <label>Marca:</label>
+                            <div class="custom-select-wrapper" id="brand-dropdown">
+                                <div class="custom-select-trigger">
+                                    <span>Todas as marcas</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="custom-options">
+                                    <!-- JS vai preencher -->
+                                </div>
+                            </div>
                         </div>
                         
                         <button id="reset-filters" class="btn btn-secondary">

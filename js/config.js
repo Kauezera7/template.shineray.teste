@@ -12,7 +12,7 @@ const Config = {
     },
     contato: {
         whatsapp: {
-            numero: "554198251214", // Apenas números (com DDD) para o link
+            numero: "554198251213", // Apenas números (com DDD) para o link
             formatado: "(41) 9825-1213" // Como aparece escrito na tela
         },
         telefone: {
