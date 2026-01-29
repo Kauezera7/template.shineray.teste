@@ -137,11 +137,33 @@
 /* Grade de Produtos */
 .products {
     display: grid;
-    /* Usamos auto-fit para que o container se ajuste aos itens e centralize-os */
-    grid-template-columns: repeat(auto-fit, 300px); 
+    /* Define exatamente 4 colunas para o catálogo */
+    grid-template-columns: repeat(4, 1fr); 
     gap: 25px;
-    padding: 20px 0;
-    justify-content: center; /* Centraliza a grade na tela */
+    padding: 30px 0;
+    width: 100%;
+}
+
+/* Ajuste para tablets (3 colunas) */
+@media (max-width: 1100px) {
+    .products {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Ajuste para celulares grandes (2 colunas) */
+@media (max-width: 768px) {
+    .products {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+}
+
+/* Ajuste para celulares pequenos (1 coluna) */
+@media (max-width: 480px) {
+    .products {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* --- ANIMAÇÃO DE ENTRADA DOS PRODUTOS --- */
@@ -168,6 +190,19 @@
     margin-bottom: 30px;
     font-size: 2rem;
     color: var(--primary-color);
+}
+
+/* Centraliza os produtos relacionados especificamente */
+#related-products-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    width: 100%;
+}
+
+#related-products-container .product-link {
+    flex: 0 1 280px; /* Largura base para manter o alinhamento central */
 }
 
 /* --- CUSTOM COLOR DROPDOWN --- */
