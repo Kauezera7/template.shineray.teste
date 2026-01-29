@@ -146,31 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        productsContainer.innerHTML = filteredProducts.map((product, index) => {
-            const highlightsHtml = (product.highlights || [])
-                .map(h => `<span><i class="fas ${h.icon}"></i> ${h.text}</span>`)
-                .join('');
-
-            return `
-                <a href="product-detail.html?modelo=${product.slug}" class="product-link product-card-animated" style="animation-delay: ${index * 0.1}s">
-                    <div class="product-card">
-                        <div class="moto-badge">${(product.brand || 'Shineray').toUpperCase()}</div>
-                        <img src="${product.mainImage}" alt="${product.name}">
-                        <div class="moto-info">
-                            <h3>${product.name}</h3>
-                            <div class="moto-specs">
-                                <span><i class="fas fa-gas-pump"></i> ${(product.fuel || 'gasolina').charAt(0).toUpperCase() + (product.fuel || 'gasolina').slice(1)}</span>
-                                ${highlightsHtml}
-                            </div>
-                            <div class="moto-price">
-                                <strong>${product.price}</strong>
-                                <small>${product.installment || 'Consulte parcelamento'}</small>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            `;
-        }).join('');
+        productsContainer.innerHTML = filteredProducts.map((product, index) => renderProductCard(product, index)).join('');
     };
 
     // Global click para fechar dropdowns
