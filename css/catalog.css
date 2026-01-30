@@ -205,6 +205,25 @@
     flex: 0 1 280px; /* Largura base para manter o alinhamento central */
 }
 
+/* --- MOBILE SWIPE PARA PRODUTOS RELACIONADOS --- */
+@media (max-width: 768px) {
+    #related-products-container {
+        flex-wrap: nowrap; /* Não quebra linha, força ficar um ao lado do outro */
+        overflow-x: auto;  /* Habilita rolagem horizontal */
+        justify-content: flex-start; /* Começa da esquerda */
+        padding: 0 20px 20px 20px; /* Padding lateral para centralização */
+        scroll-snap-type: x mandatory; /* Efeito de 'imã' ao rolar */
+        scroll-padding: 20px; /* Alinha o imã com o padding lateral */
+        -webkit-overflow-scrolling: touch; /* Scroll suave no iOS */
+        gap: 15px;
+    }
+
+    #related-products-container .product-card {
+        min-width: calc(100vw - 40px); /* Ocupa a tela quase toda, sobrando margens */
+        scroll-snap-align: center; /* Centraliza o card ao soltar */
+    }
+}
+
 /* --- CUSTOM COLOR DROPDOWN --- */
 .custom-select-wrapper {
     position: relative;
