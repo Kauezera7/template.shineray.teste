@@ -19,7 +19,7 @@ const Config = {
             numero: "554198251213",
             formatado: "(41) 9825-1213"
         },
-        email: "kaueteste@shineraycolombo.com.br"
+        email: "TESTEVERCEL@shineraycolombo.com.br"
     },
     endereco: {
         rua: "R. Pasteur, 220",
