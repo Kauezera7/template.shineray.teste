@@ -135,8 +135,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
 
-                <a href="${whatsappLink}" class="btn btn-contact" target="_blank">
-                    <i class="fab fa-whatsapp"></i> Falar com Vendedor sobre esta Moto
+                <a href="${whatsappLink}" class="btn btn-contact" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 15px; font-size: 1.1rem; padding: 15px 25px;">
+                    <i class="fab fa-whatsapp" style="font-size: 1.6rem;"></i> Falar com um Vendedor
                 </a>
                 
                 <div class="specifications accordion">
