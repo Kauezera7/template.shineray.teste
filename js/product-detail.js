@@ -91,6 +91,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const fuelIcon = fuelType === 'eletrica' ? 'fa-bolt' : 'fa-gas-pump';
     const fuelLabel = fuelType.charAt(0).toUpperCase() + fuelType.slice(1);
 
+    // PREPARA O LINK DO WHATSAPP
+    // Tenta pegar o número do Config global, ou usa um fallback
+    const whatsappNumber = (typeof Config !== 'undefined' && Config.contato && Config.contato.whatsapp) 
+        ? Config.contato.whatsapp.numero 
+        : '5541999999999';
+    
+    const pageUrl = window.location.href;
+    const whatsappMessage = `Olá! Gostaria de mais informações sobre a *${product.name}* que vi no site.\nLink: ${pageUrl}`;
+    const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
     // 3. Injeta tudo no container principal da página
     productDetailContainer.innerHTML = `
         <div class="product-detail-layout">
@@ -125,7 +135,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
 
-                <a href="#" class="btn btn-contact config-whatsapp-link" target="_blank">Falar com um Vendedor</a>
+                <a href="${whatsappLink}" class="btn btn-contact" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Falar com Vendedor sobre esta Moto
+                </a>
                 
                 <div class="specifications accordion">
                     <div class="accordion-header">
