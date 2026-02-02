@@ -52,10 +52,24 @@ document.addEventListener('DOMContentLoaded', () => {
     // Atualiza o título da aba do navegador e as metatags para redes sociais
     document.title = `Shineray - ${product.name}`;
     
+    // Função auxiliar para criar URL absoluta (Necessário para o WhatsApp)
+    const getAbsoluteUrl = (relativePath) => {
+        return new URL(relativePath, window.location.href).href;
+    };
+
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
         metaDescription.setAttribute('content', `Conheça a ${product.name}. Preço: ${product.price}. Veja a ficha técnica completa e fale com um consultor.`);
     }
+
+    // Atualiza Tags Open Graph (WhatsApp/Facebook)
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    const ogDesc = document.querySelector('meta[property="og:description"]');
+    const ogImage = document.querySelector('meta[property="og:image"]');
+
+    if (ogTitle) ogTitle.setAttribute('content', `Shineray - ${product.name}`);
+    if (ogDesc) ogDesc.setAttribute('content', `Confira a ${product.name}. A partir de ${product.price}.`);
+    if (ogImage) ogImage.setAttribute('content', getAbsoluteUrl(product.mainImage));
 
     // --- MONTAGEM DO HTML DINÂMICO ---
 
