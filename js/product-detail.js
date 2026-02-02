@@ -92,14 +92,37 @@ document.addEventListener('DOMContentLoaded', () => {
     const fuelLabel = fuelType.charAt(0).toUpperCase() + fuelType.slice(1);
 
     // PREPARA O LINK DO WHATSAPP
-    // Tenta pegar o número do Config global, ou usa um fallback
-    const whatsappNumber = (typeof Config !== 'undefined' && Config.contato && Config.contato.whatsapp) 
-        ? Config.contato.whatsapp.numero 
-        : '5541999999999';
+    // 1. Tenta pegar o número específico de vendas da página de produto
+    // 2. Se não existir, tenta o número geral do Config
+    // 3. Se nada existir, usa um fallback
+    const whatsappNumber = (typeof Config !== 'undefined' && Config.paginaProduto && Config.paginaProduto.botaoWhatsapp && Config.paginaProduto.botaoWhatsapp.numeroVendas)
+        ? Config.paginaProduto.botaoWhatsapp.numeroVendas
+        : (typeof Config !== 'undefined' && Config.contato && Config.contato.whatsapp) 
+            ? Config.contato.whatsapp.numero 
+            : '5541999999999';
     
+    // Pega o template da mensagem do Config ou usa um padrão
+    const msgTemplate = (typeof Config !== 'undefined' && Config.paginaProduto && Config.paginaProduto.mensagemPadrao)
+        ? Config.paginaProduto.mensagemPadrao
+        : "Olá! Gostaria de mais informações sobre a *{NOME_MOTO}*.\nLink: {LINK}";
+
     const pageUrl = window.location.href;
-    const whatsappMessage = `Olá! Gostaria de mais informações sobre a *${product.name}* que vi no site.\nLink: ${pageUrl}`;
+    
+    // Substitui os "coringas" pelos dados reais
+    const whatsappMessage = msgTemplate
+        .replace('{NOME_MOTO}', product.name)
+        .replace('{LINK}', pageUrl);
+
     const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
+    // Configurações visuais do botão (vindas do config.js ou padrão)
+    const btnConfig = (typeof Config !== 'undefined' && Config.paginaProduto && Config.paginaProduto.botaoWhatsapp)
+        ? Config.paginaProduto.botaoWhatsapp
+        : { 
+            texto: "Falar com um Vendedor", 
+            iconeTamanho: "1.6rem", 
+            estilo: "display: flex; align-items: center; justify-content: center; gap: 15px;" 
+          };
 
     // 3. Injeta tudo no container principal da página
     productDetailContainer.innerHTML = `
@@ -135,8 +158,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
 
-                <a href="${whatsappLink}" class="btn btn-contact" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 15px; font-size: 1.1rem; padding: 15px 25px;">
-                    <i class="fab fa-whatsapp" style="font-size: 1.6rem;"></i> Falar com um Vendedor
+                <a href="${whatsappLink}" class="btn btn-contact" target="_blank" style="${btnConfig.estilo}">
+                    <i class="fab fa-whatsapp" style="font-size: ${btnConfig.iconeTamanho};"></i> ${btnConfig.texto}
                 </a>
                 
                 <div class="specifications accordion">

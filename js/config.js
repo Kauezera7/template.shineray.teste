@@ -30,6 +30,30 @@ const Config = {
         facebook: "https://facebook.com",
         instagram: "https://www.instagram.com/shineraycolombo?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
         youtube: "https://www.youtube.com/@ShinerayMotos"
+    },
+    paginaProduto: {
+        botaoWhatsapp: {
+            numeroVendas: "554198251213", // <--- COLOQUE O NÚMERO DE VENDAS AQUI
+            texto: "Falar com um Vendedor",
+            iconeTamanho: "1.6rem",
+            estilo: "display: flex; align-items: center; justify-content: center; gap: 15px; font-size: 1.1rem; padding: 15px 25px;"
+        },
+        // Use {NOME_MOTO} onde quer que apareça o nome e {LINK} onde quer o link da página
+        mensagemPadrao: "Olá! Gostaria de mais informações sobre a *{NOME_MOTO}* que vi no site.\nLink: {LINK}"
+    },
+    sobre: {
+        posVenda: {
+            whatsapp: "5541999999999", // Número do Pós-Venda
+            mensagem: "Olá! Gostaria de falar sobre o Pós-Venda."
+        },
+        financiamento: {
+            whatsapp: "5541888888888", // Número do Financiamento
+            mensagem: "Olá! Gostaria de simular um financiamento."
+        },
+        oficina: {
+            whatsapp: "5541777777777", // Número da Oficina
+            mensagem: "Olá! Gostaria de agendar um serviço na Oficina."
+        }
     }
 };
 
@@ -75,6 +99,22 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.config-social-fb').forEach(el => el.href = Config.redesSociais.facebook);
     document.querySelectorAll('.config-social-insta').forEach(el => el.href = Config.redesSociais.instagram);
     document.querySelectorAll('.config-social-yt').forEach(el => el.href = Config.redesSociais.youtube);
+
+    // 7. Atualiza Links Específicos da Seção "Sobre" (Pós-Venda, Financiamento, Oficina)
+    if (Config.sobre) {
+        const setWhatsLink = (selector, data) => {
+            document.querySelectorAll(selector).forEach(el => {
+                if (data && data.whatsapp) {
+                    const msg = data.mensagem ? `?text=${encodeURIComponent(data.mensagem)}` : '';
+                    el.href = `https://wa.me/${data.whatsapp}${msg}`;
+                }
+            });
+        };
+
+        setWhatsLink('.contact-pos-venda', Config.sobre.posVenda);
+        setWhatsLink('.contact-financiamento', Config.sobre.financiamento);
+        setWhatsLink('.contact-oficina', Config.sobre.oficina);
+    }
 
     console.log('✅ Configurações do site carregadas (js/config.js)');
 });
