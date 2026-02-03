@@ -6,7 +6,7 @@ const productsData = [
     {
         id: 1,
         slug: "urban-150-efi",
-        name: "Shineray Urban 150 EFI",
+        name: " Urban 150 EFI",
         category: "scooter",
         price: "R$ 13.990,00",
         installment: "12x de R$ 1.165,83",
