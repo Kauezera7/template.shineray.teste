@@ -5,14 +5,18 @@ Este documento fornece instruções detalhadas para realizar a manutenção téc
 ---
 
 ## 1. Configurações Globais (WhatsApp, Endereço, Redes Sociais)
-Todas as informações de contato estão centralizadas em `js/config.js`.
+As informações estão divididas em dois arquivos principais:
 
-**Como atualizar:**
+### 📱 Dados e Contatos (`js/config.js`)
+Centraliza números de telefone, links de redes sociais e endereço.
 1. Abra `js/config.js`.
 2. Altere os valores dentro do objeto `Config`.
-3. O sistema atualizará automaticamente todos os links de WhatsApp, números de telefone, e-mails e links de redes sociais em todas as páginas do site.
 
-**Dica:** Para o link de WhatsApp funcionar corretamente, use apenas números no campo `numero` (ex: `554198251213`).
+### 🏗️ Menu e Rodapé (`js/layout.js`)
+Centraliza a estrutura HTML do topo e da base do site.
+1. Abra `js/layout.js`.
+2. Altere o HTML dentro das constantes `HEADER_CONTENT` ou `FOOTER_CONTENT`.
+3. Útil para adicionar novos links no menu ou trocar a logo.
 
 ---
 
@@ -96,4 +100,4 @@ Para manter a performance do site, siga estas recomendações:
 3. **Teste Responsivo:** Use o modo de inspeção do navegador para garantir que o layout funciona bem em celulares.
 
 ---
-*Última atualização: Janeiro de 2026.*
+*Última atualização: Fevereiro de 2026.*

@@ -17,6 +17,7 @@ template.shineray.teste/
 │   └── seller-profile.css  # Layout estilo "Linktree" para vendedores
 └── js/
     ├── config.js           # ⚙️ CONFIGURAÇÃO GLOBAL (WhatsApp, Endereço, Redes)
+    ├── layout.js           # 🏗️ ESTRUTURA GLOBAL (Injeção de Header e Footer)
     ├── products-data.js    # 📦 Banco de dados de produtos
     ├── sellers-data.js     # 👥 Banco de dados de vendedores
     ├── render-utils.js     # 🛠️ Utilitários de renderização de componentes
@@ -33,13 +34,11 @@ template.shineray.teste/
 
 ## 🚀 2. Funcionalidades de Destaque
 
-### ⚙️ Configuração Centralizada (`js/config.js`)
-O coração da manutenção do site. Através deste arquivo, é possível alterar em um único lugar:
-- **Contatos:** Números de WhatsApp (formatado e link) e Telefone.
-- **Localização:** Endereço completo e link direto para o Google Maps.
-- **Redes Sociais:** Links para Instagram, Facebook e YouTube.
-- **Dados da Empresa:** CNPJ e Copyright.
-*O script propaga essas mudanças automaticamente para todos os ícones, botões e textos do site.*
+### ⚙️ Configuração Centralizada (`js/config.js` e `js/layout.js`)
+O coração da manutenção do site.
+- **Dados (`config.js`):** Altera em um único lugar contatos, localização e redes sociais.
+- **Estrutura (`layout.js`):** Gerencia o HTML do Menu e Rodapé de todas as páginas simultaneamente.
+*As mudanças se propagam automaticamente para todo o site, eliminando a necessidade de editar múltiplos arquivos HTML.*
 
 ### 📦 Catálogo Inteligente com Filtros Avançados
 Diferente de sites estáticos comuns, o catálogo oferece:
@@ -86,4 +85,4 @@ Abra o arquivo `js/config.js` e altere os valores dentro do objeto `Config`.
 - **Google Fonts** (Montserrat)
 
 ---
-*Documentação atualizada em Janeiro de 2026.*
+*Documentação atualizada em Fevereiro de 2026.*
